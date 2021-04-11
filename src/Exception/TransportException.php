@@ -25,10 +25,10 @@
 namespace PlanetTeamSpeak\TeamSpeak3Framework\Exception;
 
 /**
- * Class TransportException
+ * Class ProfilerException
  * @package PlanetTeamSpeak\TeamSpeak3Framework\Exception
- * @class TransportException
- * @brief Enhanced exception class for PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport objects.
+ * @class ProfilerException
+ * @brief Enhanced exception class for PlanetTeamSpeak\TeamSpeak3Framework\Helper\Profiler objects.
  */
 class TransportException extends TeamSpeak3Exception
 {
