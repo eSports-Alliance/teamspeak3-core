@@ -17,28 +17,28 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Convert;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Crypt;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\NodeException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Helper\Convert;
+use ESportsAlliance\TeamSpeakCore\Helper\Crypt;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Exception\NodeException;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
 use ReflectionClass;
 
 /**
  * Class Host
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Node
+ * @package ESportsAlliance\TeamSpeakCore\Node
  * @class Host
  * @brief Class describing a TeamSpeak 3 server instance and all it's parameters.
  */
@@ -95,7 +95,7 @@ class Host extends Node
     protected $sort_clients_channels = false;
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\Node\Host constructor.
+     * The ESportsAlliance\TeamSpeakCore\Node\Host constructor.
      *
      * @param  ServerQuery $squery
      */
@@ -261,7 +261,7 @@ class Host extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Server object matching the currently selected ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Server object matching the currently selected ID.
      *
      * @return Server
      * @throws ServerQueryException
@@ -272,7 +272,7 @@ class Host extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Server object matching the given ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Server object matching the given ID.
      *
      * @param  integer $sid
      * @return Server
@@ -286,7 +286,7 @@ class Host extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Server object matching the given port number.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Server object matching the given port number.
      *
      * @param  integer $port
      * @return Server
@@ -300,7 +300,7 @@ class Host extends Node
     }
 
     /**
-     * Returns the first PlanetTeamSpeak\TeamSpeak3Framework\Node\Server object matching the given name.
+     * Returns the first ESportsAlliance\TeamSpeakCore\Node\Server object matching the given name.
      *
      * @param  string $name
      * @return Server
@@ -318,7 +318,7 @@ class Host extends Node
     }
 
     /**
-     * Returns the first PlanetTeamSpeak\TeamSpeak3Framework\Node\Server object matching the given unique identifier.
+     * Returns the first ESportsAlliance\TeamSpeakCore\Node\Server object matching the given unique identifier.
      *
      * @param  string $uid
      * @return Server
@@ -425,7 +425,7 @@ class Host extends Node
     }
 
     /**
-     * Returns an array filled with PlanetTeamSpeak\TeamSpeak3Framework\Node\Server objects.
+     * Returns an array filled with ESportsAlliance\TeamSpeakCore\Node\Server objects.
      *
      * @param  array $filter
      * @return array|Server[]
@@ -504,7 +504,7 @@ class Host extends Node
      * @param  integer $cldbid
      * @return array
      */
-    public function apiKeyCreate($scope = TeamSpeak3::APIKEY_READ, $lifetime = 14, $cldbid = null)
+    public function apiKeyCreate($scope = TeamSpeak::APIKEY_READ, $lifetime = 14, $cldbid = null)
     {
         $detail = $this->execute("apikeyadd", ["scope" => $scope, "lifetime" => $lifetime, "cldbid" => $cldbid])->toList();
 
@@ -630,7 +630,7 @@ class Host extends Node
      * @param integer $permissionId
      * @return array
      * @throws ServerQueryException
-     * @throws \PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException
+     * @throws \ESportsAlliance\TeamSpeakCore\Exception\AdapterException
      */
     public function permissionFind($permissionId)
     {
@@ -841,7 +841,7 @@ class Host extends Node
      * @param  integer $loglevel
      * @return void
      */
-    public function logAdd($logmsg, $loglevel = TeamSpeak3::LOGLEVEL_INFO)
+    public function logAdd($logmsg, $loglevel = TeamSpeak::LOGLEVEL_INFO)
     {
         $sid = $this->serverSelectedId();
 
@@ -1079,7 +1079,7 @@ class Host extends Node
     protected function fetchPermissionCats()
     {
         $permcats = [];
-        $reflects = new ReflectionClass("TeamSpeak3");
+        $reflects = new ReflectionClass("TeamSpeak");
 
         foreach ($reflects->getConstants() as $key => $val) {
             if (!StringHelper::factory($key)->startsWith("PERM_CAT") || $val == 0xFF) {
@@ -1191,7 +1191,7 @@ class Host extends Node
     }
 
     /**
-     * Returns the underlying PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery object.
+     * Returns the underlying ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery object.
      *
      * @return ServerQuery
      */

@@ -1,14 +1,14 @@
 <?php
 
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Adapter;
+namespace ESportsAlliance\TeamSpeakCore\Adapter;
 
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Profiler;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Transport\MockTCP;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Helper\Profiler;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Transport\MockTCP;
 
 class MockServerQuery extends ServerQuery
 {
@@ -29,7 +29,7 @@ class MockServerQuery extends ServerQuery
 
         $rdy = $this->getTransport()->readLine();
 
-        if (!$rdy->startsWith(TeamSpeak3::TS3_PROTO_IDENT) && !$rdy->startsWith(TeamSpeak3::TEA_PROTO_IDENT) && !(defined("CUSTOM_PROTO_IDENT") && $rdy->startsWith(CUSTOM_PROTO_IDENT))) {
+        if (!$rdy->startsWith(TeamSpeak::TS3_PROTO_IDENT) && !$rdy->startsWith(TeamSpeak::TEA_PROTO_IDENT) && !(defined("CUSTOM_PROTO_IDENT") && $rdy->startsWith(CUSTOM_PROTO_IDENT))) {
             throw new AdapterException("invalid reply from the server (" . $rdy . ")");
         }
 

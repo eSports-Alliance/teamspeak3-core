@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Helper;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 
 /**
  * Class Convert
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Helper
+ * @package ESportsAlliance\TeamSpeakCore\Helper
  * @class Convert
  * @brief Helper class for data conversion.
  */
@@ -94,22 +94,22 @@ class Convert
      */
     public static function codec($codec)
     {
-        if ($codec == TeamSpeak3::CODEC_SPEEX_NARROWBAND) {
+        if ($codec == TeamSpeak::CODEC_SPEEX_NARROWBAND) {
             return "Speex Narrowband";
         }
-        if ($codec == TeamSpeak3::CODEC_SPEEX_WIDEBAND) {
+        if ($codec == TeamSpeak::CODEC_SPEEX_WIDEBAND) {
             return "Speex Wideband";
         }
-        if ($codec == TeamSpeak3::CODEC_SPEEX_ULTRAWIDEBAND) {
+        if ($codec == TeamSpeak::CODEC_SPEEX_ULTRAWIDEBAND) {
             return "Speex Ultra-Wideband";
         }
-        if ($codec == TeamSpeak3::CODEC_CELT_MONO) {
+        if ($codec == TeamSpeak::CODEC_CELT_MONO) {
             return "CELT Mono";
         }
-        if ($codec == TeamSpeak3::CODEC_OPUS_VOICE) {
+        if ($codec == TeamSpeak::CODEC_OPUS_VOICE) {
             return "Opus Voice";
         }
-        if ($codec == TeamSpeak3::CODEC_OPUS_MUSIC) {
+        if ($codec == TeamSpeak::CODEC_OPUS_MUSIC) {
             return "Opus Music";
         }
 
@@ -124,13 +124,13 @@ class Convert
      */
     public static function groupType($type)
     {
-        if ($type == TeamSpeak3::GROUP_DBTYPE_TEMPLATE) {
+        if ($type == TeamSpeak::GROUP_DBTYPE_TEMPLATE) {
             return "Template";
         }
-        if ($type == TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+        if ($type == TeamSpeak::GROUP_DBTYPE_REGULAR) {
             return "Regular";
         }
-        if ($type == TeamSpeak3::GROUP_DBTYPE_SERVERQUERY) {
+        if ($type == TeamSpeak::GROUP_DBTYPE_SERVERQUERY) {
             return "ServerQuery";
         }
 
@@ -145,19 +145,19 @@ class Convert
      */
     public static function permissionType($type)
     {
-        if ($type == TeamSpeak3::PERM_TYPE_SERVERGROUP) {
+        if ($type == TeamSpeak::PERM_TYPE_SERVERGROUP) {
             return "Server Group";
         }
-        if ($type == TeamSpeak3::PERM_TYPE_CLIENT) {
+        if ($type == TeamSpeak::PERM_TYPE_CLIENT) {
             return "Client";
         }
-        if ($type == TeamSpeak3::PERM_TYPE_CHANNEL) {
+        if ($type == TeamSpeak::PERM_TYPE_CHANNEL) {
             return "Channel";
         }
-        if ($type == TeamSpeak3::PERM_TYPE_CHANNELGROUP) {
+        if ($type == TeamSpeak::PERM_TYPE_CHANNELGROUP) {
             return "Channel Group";
         }
-        if ($type == TeamSpeak3::PERM_TYPE_CHANNELCLIENT) {
+        if ($type == TeamSpeak::PERM_TYPE_CHANNELCLIENT) {
             return "Channel Client";
         }
 
@@ -172,85 +172,85 @@ class Convert
      */
     public static function permissionCategory($pcat)
     {
-        if ($pcat == TeamSpeak3::PERM_CAT_GLOBAL) {
+        if ($pcat == TeamSpeak::PERM_CAT_GLOBAL) {
             return "Global";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GLOBAL_INFORMATION) {
+        if ($pcat == TeamSpeak::PERM_CAT_GLOBAL_INFORMATION) {
             return "Global / Information";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GLOBAL_SERVER_MGMT) {
+        if ($pcat == TeamSpeak::PERM_CAT_GLOBAL_SERVER_MGMT) {
             return "Global / Virtual Server Management";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GLOBAL_ADM_ACTIONS) {
+        if ($pcat == TeamSpeak::PERM_CAT_GLOBAL_ADM_ACTIONS) {
             return "Global / Administration";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GLOBAL_SETTINGS) {
+        if ($pcat == TeamSpeak::PERM_CAT_GLOBAL_SETTINGS) {
             return "Global / Settings";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_SERVER) {
+        if ($pcat == TeamSpeak::PERM_CAT_SERVER) {
             return "Virtual Server";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_SERVER_INFORMATION) {
+        if ($pcat == TeamSpeak::PERM_CAT_SERVER_INFORMATION) {
             return "Virtual Server / Information";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_SERVER_ADM_ACTIONS) {
+        if ($pcat == TeamSpeak::PERM_CAT_SERVER_ADM_ACTIONS) {
             return "Virtual Server / Administration";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_SERVER_SETTINGS) {
+        if ($pcat == TeamSpeak::PERM_CAT_SERVER_SETTINGS) {
             return "Virtual Server / Settings";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CHANNEL) {
+        if ($pcat == TeamSpeak::PERM_CAT_CHANNEL) {
             return "Channel";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CHANNEL_INFORMATION) {
+        if ($pcat == TeamSpeak::PERM_CAT_CHANNEL_INFORMATION) {
             return "Channel / Information";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CHANNEL_CREATE) {
+        if ($pcat == TeamSpeak::PERM_CAT_CHANNEL_CREATE) {
             return "Channel / Create";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CHANNEL_MODIFY) {
+        if ($pcat == TeamSpeak::PERM_CAT_CHANNEL_MODIFY) {
             return "Channel / Modify";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CHANNEL_DELETE) {
+        if ($pcat == TeamSpeak::PERM_CAT_CHANNEL_DELETE) {
             return "Channel / Delete";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CHANNEL_ACCESS) {
+        if ($pcat == TeamSpeak::PERM_CAT_CHANNEL_ACCESS) {
             return "Channel / Access";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GROUP) {
+        if ($pcat == TeamSpeak::PERM_CAT_GROUP) {
             return "Group";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GROUP_INFORMATION) {
+        if ($pcat == TeamSpeak::PERM_CAT_GROUP_INFORMATION) {
             return "Group / Information";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GROUP_CREATE) {
+        if ($pcat == TeamSpeak::PERM_CAT_GROUP_CREATE) {
             return "Group / Create";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GROUP_MODIFY) {
+        if ($pcat == TeamSpeak::PERM_CAT_GROUP_MODIFY) {
             return "Group / Modify";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_GROUP_DELETE) {
+        if ($pcat == TeamSpeak::PERM_CAT_GROUP_DELETE) {
             return "Group / Delete";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CLIENT) {
+        if ($pcat == TeamSpeak::PERM_CAT_CLIENT) {
             return "Client";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CLIENT_INFORMATION) {
+        if ($pcat == TeamSpeak::PERM_CAT_CLIENT_INFORMATION) {
             return "Client / Information";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CLIENT_ADM_ACTIONS) {
+        if ($pcat == TeamSpeak::PERM_CAT_CLIENT_ADM_ACTIONS) {
             return "Client / Admin";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CLIENT_BASICS) {
+        if ($pcat == TeamSpeak::PERM_CAT_CLIENT_BASICS) {
             return "Client / Basics";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_CLIENT_MODIFY) {
+        if ($pcat == TeamSpeak::PERM_CAT_CLIENT_MODIFY) {
             return "Client / Modify";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_FILETRANSFER) {
+        if ($pcat == TeamSpeak::PERM_CAT_FILETRANSFER) {
             return "File Transfer";
         }
-        if ($pcat == TeamSpeak3::PERM_CAT_NEEDED_MODIFY_POWER) {
+        if ($pcat == TeamSpeak::PERM_CAT_NEEDED_MODIFY_POWER) {
             return "Grant";
         }
 
@@ -266,41 +266,41 @@ class Convert
     public static function logLevel($level)
     {
         if (is_numeric($level)) {
-            if ($level == TeamSpeak3::LOGLEVEL_CRITICAL) {
+            if ($level == TeamSpeak::LOGLEVEL_CRITICAL) {
                 return "CRITICAL";
             }
-            if ($level == TeamSpeak3::LOGLEVEL_ERROR) {
+            if ($level == TeamSpeak::LOGLEVEL_ERROR) {
                 return "ERROR";
             }
-            if ($level == TeamSpeak3::LOGLEVEL_DEBUG) {
+            if ($level == TeamSpeak::LOGLEVEL_DEBUG) {
                 return "DEBUG";
             }
-            if ($level == TeamSpeak3::LOGLEVEL_WARNING) {
+            if ($level == TeamSpeak::LOGLEVEL_WARNING) {
                 return "WARNING";
             }
-            if ($level == TeamSpeak3::LOGLEVEL_INFO) {
+            if ($level == TeamSpeak::LOGLEVEL_INFO) {
                 return "INFO";
             }
 
             return "DEVELOP";
         } else {
             if (strtoupper($level) == "CRITICAL") {
-                return TeamSpeak3::LOGLEVEL_CRITICAL;
+                return TeamSpeak::LOGLEVEL_CRITICAL;
             }
             if (strtoupper($level) == "ERROR") {
-                return TeamSpeak3::LOGLEVEL_ERROR;
+                return TeamSpeak::LOGLEVEL_ERROR;
             }
             if (strtoupper($level) == "DEBUG") {
-                return TeamSpeak3::LOGLEVEL_DEBUG;
+                return TeamSpeak::LOGLEVEL_DEBUG;
             }
             if (strtoupper($level) == "WARNING") {
-                return TeamSpeak3::LOGLEVEL_WARNING;
+                return TeamSpeak::LOGLEVEL_WARNING;
             }
             if (strtoupper($level) == "INFO") {
-                return TeamSpeak3::LOGLEVEL_INFO;
+                return TeamSpeak::LOGLEVEL_INFO;
             }
 
-            return TeamSpeak3::LOGLEVEL_DEVEL;
+            return TeamSpeak::LOGLEVEL_DEVEL;
         }
     }
 
@@ -317,7 +317,7 @@ class Convert
 
         if (count($parts) != 5) {
             $array["timestamp"] = 0;
-            $array["level"] = TeamSpeak3::LOGLEVEL_ERROR;
+            $array["level"] = TeamSpeak::LOGLEVEL_ERROR;
             $array["channel"] = "ParamParser";
             $array["server_id"] = "";
             $array["msg"] = StringHelper::factory("convert error (" . trim($entry) . ")");

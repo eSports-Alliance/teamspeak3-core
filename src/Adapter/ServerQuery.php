@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Adapter;
+namespace ESportsAlliance\TeamSpeakCore\Adapter;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Event;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Reply;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Profiler;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Host;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Node;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Event;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Reply;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\Profiler;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Node\Host;
+use ESportsAlliance\TeamSpeakCore\Node\Node;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Transport\Transport;
 
 /**
  * @class ServerQuery
@@ -86,7 +86,7 @@ class ServerQuery extends Adapter
 
         $rdy = $this->getTransport()->readLine();
 
-        if (!$rdy->startsWith(TeamSpeak3::TS3_PROTO_IDENT) && !$rdy->startsWith(TeamSpeak3::TEA_PROTO_IDENT) && !(defined("CUSTOM_PROTO_IDENT") && $rdy->startsWith(CUSTOM_PROTO_IDENT))) {
+        if (!$rdy->startsWith(TeamSpeak::TS3_PROTO_IDENT) && !$rdy->startsWith(TeamSpeak::TEA_PROTO_IDENT) && !(defined("CUSTOM_PROTO_IDENT") && $rdy->startsWith(CUSTOM_PROTO_IDENT))) {
             throw new AdapterException("invalid reply from the server (" . $rdy . ")");
         }
 
@@ -119,7 +119,7 @@ class ServerQuery extends Adapter
      */
     public function request($cmd, $throw = true)
     {
-        $query = StringHelper::factory($cmd)->section(TeamSpeak3::SEPARATOR_CELL);
+        $query = StringHelper::factory($cmd)->section(TeamSpeak::SEPARATOR_CELL);
 
         if (strstr($cmd, "\r") || strstr($cmd, "\n")) {
             throw new AdapterException("illegal characters in command '" . $query . "'");
@@ -139,7 +139,7 @@ class ServerQuery extends Adapter
         do {
             $str = $this->getTransport()->readLine();
             $rpl[] = $str;
-        } while ($str instanceof StringHelper && $str->section(TeamSpeak3::SEPARATOR_CELL) != TeamSpeak3::ERROR);
+        } while ($str instanceof StringHelper && $str->section(TeamSpeak::SEPARATOR_CELL) != TeamSpeak::ERROR);
 
         $this->getProfiler()->stop();
 
@@ -164,7 +164,7 @@ class ServerQuery extends Adapter
 
         do {
             $evt = $this->getTransport()->readLine();
-        } while ($evt instanceof StringHelper && !$evt->section(TeamSpeak3::SEPARATOR_CELL)->startsWith(TeamSpeak3::EVENT));
+        } while ($evt instanceof StringHelper && !$evt->section(TeamSpeak::SEPARATOR_CELL)->startsWith(TeamSpeak::EVENT));
 
         return new Event($evt, $this->getHost());
     }
@@ -182,7 +182,7 @@ class ServerQuery extends Adapter
         $cells = [];
 
         foreach ($params as $ident => $value) {
-            $ident = is_numeric($ident) ? "" : strtolower($ident) . TeamSpeak3::SEPARATOR_PAIR;
+            $ident = is_numeric($ident) ? "" : strtolower($ident) . TeamSpeak::SEPARATOR_PAIR;
 
             if (is_array($value)) {
                 $value = array_values($value);
@@ -216,14 +216,14 @@ class ServerQuery extends Adapter
         }
 
         foreach (array_keys($cells) as $ident) {
-            $cells[$ident] = implode(TeamSpeak3::SEPARATOR_CELL, $cells[$ident]);
+            $cells[$ident] = implode(TeamSpeak::SEPARATOR_CELL, $cells[$ident]);
         }
 
         if (count($args)) {
-            $cmd .= " " . implode(TeamSpeak3::SEPARATOR_CELL, $args);
+            $cmd .= " " . implode(TeamSpeak::SEPARATOR_CELL, $args);
         }
         if (count($cells)) {
-            $cmd .= " " . implode(TeamSpeak3::SEPARATOR_LIST, $cells);
+            $cmd .= " " . implode(TeamSpeak::SEPARATOR_LIST, $cells);
         }
 
         return trim($cmd);

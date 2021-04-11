@@ -17,19 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Viewer;
+namespace ESportsAlliance\TeamSpeakCore\Viewer;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Node;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Node\Node;
 
 /**
  * @class Text
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Viewer
+ * @package ESportsAlliance\TeamSpeakCore\Viewer
  * @brief Renders nodes used in ASCII-based TeamSpeak 3 viewers.
  */
 class Text implements ViewerInterface

@@ -39,12 +39,12 @@
   },
   "autoload": {
     "psr-4": {
-      "ESportsAlliance\\TeamSpeak3Core\\": "src/"
+      "ESportsAlliance\\TeamSpeakCore\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "ESportsAlliance\\TeamSpeak3Core\\Tests\\": "tests/"
+      "ESportsAlliance\\TeamSpeakCore\\Tests\\": "tests/"
     }
   },
   "scripts": {

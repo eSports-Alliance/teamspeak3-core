@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 
 /**
  * Class Client
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Node
+ * @package ESportsAlliance\TeamSpeakCore\Node
  * @class Client
  * @brief Class describing a TeamSpeak 3 client and all it's parameters.
  */
@@ -109,7 +109,7 @@ class Client extends Node
      */
     public function message($msg)
     {
-        $this->execute("sendtextmessage", ["msg" => $msg, "target" => $this->getId(), "targetmode" => TeamSpeak3::TEXTMSG_CLIENT]);
+        $this->execute("sendtextmessage", ["msg" => $msg, "target" => $this->getId(), "targetmode" => TeamSpeak::TEXTMSG_CLIENT]);
     }
 
     /**
@@ -131,7 +131,7 @@ class Client extends Node
      * @param  string  $reasonmsg
      * @return void
      */
-    public function kick($reasonid = TeamSpeak3::KICK_CHANNEL, $reasonmsg = null)
+    public function kick($reasonid = TeamSpeak::KICK_CHANNEL, $reasonmsg = null)
     {
         $this->getParent()->clientKick($this->getId(), $reasonid, $reasonmsg);
     }
@@ -316,7 +316,7 @@ class Client extends Node
         }
 
         $download = $this->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->avatarGetName());
-        $transfer = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
+        $transfer = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
 
         return $transfer->download($download["ftkey"], $download["size"]);
     }
@@ -401,7 +401,7 @@ class Client extends Node
         }
 
         $download = $this->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->iconGetName("client_icon_id"));
-        $transfer = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
+        $transfer = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
 
         return $transfer->download($download["ftkey"], $download["size"]);
     }
@@ -415,7 +415,7 @@ class Client extends Node
      */
     public function sendPluginCmd($plugin, $data)
     {
-        $this->execute("plugincmd", ["name" => $plugin, "data" => $data, "targetmode" => TeamSpeak3::PLUGINCMD_CLIENT, "target" => $this->getId()]);
+        $this->execute("plugincmd", ["name" => $plugin, "data" => $data, "targetmode" => TeamSpeak::PLUGINCMD_CLIENT, "target" => $this->getId()]);
     }
 
     /**

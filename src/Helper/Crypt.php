@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Helper;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
 
 /**
  * Class Crypt
  * todo: Replace this class with native encryption
  *
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Helper
+ * @package ESportsAlliance\TeamSpeakCore\Helper
  * @class Crypt
  * @brief Helper class for data encryption.
  */

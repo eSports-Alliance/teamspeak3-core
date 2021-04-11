@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Exception;
+namespace ESportsAlliance\TeamSpeakCore\Exception;
 
 /**
  * Class SignalException
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Exception
+ * @package ESportsAlliance\TeamSpeakCore\Exception
  * @class SignalException
- * @brief Enhanced exception class for PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal\Handler objects.
+ * @brief Enhanced exception class for ESportsAlliance\TeamSpeakCore\Helper\Signal\Handler objects.
  */
 class SignalException extends HelperException
 {

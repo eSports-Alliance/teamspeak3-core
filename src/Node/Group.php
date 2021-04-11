@@ -1,11 +1,11 @@
 <?php
 
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 
 abstract class Group extends Node
 {
@@ -21,7 +21,7 @@ abstract class Group extends Node
     {
         foreach ($this as $client) {
             try {
-                $this->execute("sendtextmessage", ["msg" => $msg, "target" => $client, "targetmode" => TeamSpeak3::TEXTMSG_CLIENT]);
+                $this->execute("sendtextmessage", ["msg" => $msg, "target" => $client, "targetmode" => TeamSpeak::TEXTMSG_CLIENT]);
             } catch (ServerQueryException $e) {
                 /* ERROR_client_invalid_id */
                 if ($e->getCode() != 0x0200) {
@@ -43,7 +43,7 @@ abstract class Group extends Node
         }
 
         $download = $this->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->iconGetName("iconid"));
-        $transfer = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
+        $transfer = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
 
         return $transfer->download($download["ftkey"], $download["size"]);
     }

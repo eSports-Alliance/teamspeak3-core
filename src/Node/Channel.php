@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
 
 /**
  * Class Channel
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Node
+ * @package ESportsAlliance\TeamSpeakCore\Node
  * @class Channel
  * @brief Class describing a TeamSpeak 3 channel and all it's parameters.
  */
@@ -57,7 +57,7 @@ class Channel extends Node
     }
 
     /**
-     * Returns an array filled with PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel objects.
+     * Returns an array filled with ESportsAlliance\TeamSpeakCore\Node\Channel objects.
      *
      * @param  array $filter
      * @return array|Channel[]
@@ -76,7 +76,7 @@ class Channel extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel object matching the given ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Channel object matching the given ID.
      *
      * @param  integer $cid
      * @return Channel
@@ -92,7 +92,7 @@ class Channel extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel object matching the given name.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Channel object matching the given name.
      *
      * @param  integer $name
      * @return Channel
@@ -110,7 +110,7 @@ class Channel extends Node
     }
 
     /**
-     * Returns an array filled with PlanetTeamSpeak\TeamSpeak3Framework\Node\Client objects.
+     * Returns an array filled with ESportsAlliance\TeamSpeakCore\Node\Client objects.
      *
      * @param  array $filter
      * @return array | Client[]
@@ -129,7 +129,7 @@ class Channel extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Client object matching the given ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Client object matching the given ID.
      *
      * @param  integer $clid
      * @return Client
@@ -145,7 +145,7 @@ class Channel extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Client object matching the given name.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Client object matching the given name.
      *
      * @param  integer $name
      * @return Client
@@ -402,7 +402,7 @@ class Channel extends Node
         }
 
         $download = $this->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->iconGetName("channel_icon_id"));
-        $transfer = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
+        $transfer = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
 
         return $transfer->download($download["ftkey"], $download["size"]);
     }
@@ -434,7 +434,7 @@ class Channel extends Node
             $this->getParent()->clientMove($this->getParent()->whoamiGet("client_id"), $this->getId(), $cpw);
         }
 
-        $this->execute("sendtextmessage", ["msg" => $msg, "target" => $this->getId(), "targetmode" => TeamSpeak3::TEXTMSG_CHANNEL]);
+        $this->execute("sendtextmessage", ["msg" => $msg, "target" => $this->getId(), "targetmode" => TeamSpeak::TEXTMSG_CHANNEL]);
     }
 
     /**
@@ -475,7 +475,7 @@ class Channel extends Node
             $this->getParent()->clientMove($this->getParent()->whoamiGet("client_id"), $this->getId(), $cpw);
         }
 
-        $this->execute("plugincmd", ["name" => $plugin, "data" => $data, "targetmode" => $subscribed ? TeamSpeak3::PLUGINCMD_CHANNEL_SUBSCRIBED : TeamSpeak3::PLUGINCMD_CHANNEL]);
+        $this->execute("plugincmd", ["name" => $plugin, "data" => $data, "targetmode" => $subscribed ? TeamSpeak::PLUGINCMD_CHANNEL_SUBSCRIBED : TeamSpeak::PLUGINCMD_CHANNEL]);
     }
 
     /**

@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Reply;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Convert;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Viewer\ViewerInterface;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Reply;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\Convert;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Viewer\ViewerInterface;
 
 /**
  * Class Node
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Node
+ * @package ESportsAlliance\TeamSpeakCore\Node
  * @class Abstract
  * @brief Abstract class describing a TeamSpeak 3 node and all it's parameters.
  */

@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Exception;
+namespace ESportsAlliance\TeamSpeakCore\Exception;
 
 /**
  * Class ServerQueryException
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Exception
+ * @package ESportsAlliance\TeamSpeakCore\Exception
  * @class ServerQueryException
- * @brief Enhanced exception class for PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery objects.
+ * @brief Enhanced exception class for ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery objects.
  */
 class ServerQueryException extends AdapterException
 {
@@ -40,7 +40,7 @@ class ServerQueryException extends AdapterException
     protected $return_code = null;
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\ServerQuery\Exception constructor.
+     * The ESportsAlliance\TeamSpeakCore\ServerQuery\Exception constructor.
      *
      * @param  string  $mesg
      * @param  integer $code

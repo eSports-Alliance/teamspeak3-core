@@ -17,19 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Exception;
+namespace ESportsAlliance\TeamSpeakCore\Exception;
 
 /**
  * Class FileTransferException
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Exception
+ * @package ESportsAlliance\TeamSpeakCore\Exception
  * @class FileTransferException
- * @brief Enhanced exception class for PlanetTeamSpeak\TeamSpeak3Framework\Adapter\FileTransfer objects.
+ * @brief Enhanced exception class for ESportsAlliance\TeamSpeakCore\Adapter\FileTransfer objects.
  */
-class FileTransferException extends TeamSpeak3Exception
+class FileTransferException extends TeamSpeakException
 {
 }

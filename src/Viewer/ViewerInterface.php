@@ -17,17 +17,17 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Viewer;
+namespace ESportsAlliance\TeamSpeakCore\Viewer;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Node;
+use ESportsAlliance\TeamSpeakCore\Node\Node;
 
 /**
- * @class PlanetTeamSpeak\TeamSpeak3Framework\Viewer\ViewerInterface
+ * @class ESportsAlliance\TeamSpeakCore\Viewer\ViewerInterface
  * @brief Interface class describing a TeamSpeak 3 viewer.
  */
 interface ViewerInterface

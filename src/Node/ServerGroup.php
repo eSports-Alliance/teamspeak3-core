@@ -17,19 +17,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\NodeException;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Exception\NodeException;
 
 /**
  * @class ServerGroup
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Node
+ * @package ESportsAlliance\TeamSpeakCore\Node
  * @brief Class describing a TeamSpeak 3 server group and all it's parameters.
  */
 class ServerGroup extends Group
@@ -85,7 +85,7 @@ class ServerGroup extends Group
      * @param integer $type
      * @return integer
      */
-    public function copy($name = null, $tsgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
+    public function copy($name = null, $tsgid = 0, $type = TeamSpeak::GROUP_DBTYPE_REGULAR)
     {
         return $this->getParent()->serverGroupCopy($this->getId(), $name, $tsgid, $type);
     }
@@ -201,7 +201,7 @@ class ServerGroup extends Group
     public function privilegeKeyCreate($description = null, $customset = null)
     {
         return $this->getParent()
-                    ->privilegeKeyCreate($this->getId(), TeamSpeak3::TOKEN_SERVERGROUP, 0, $description, $customset);
+                    ->privilegeKeyCreate($this->getId(), TeamSpeak::TOKEN_SERVERGROUP, 0, $description, $customset);
     }
 
     /**

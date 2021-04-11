@@ -187,7 +187,7 @@ When you use this solution, you'll probably start using the TS3 PHP  Framework l
 ```php
 <?php
 // load framework files
-require_once("libraries/TeamSpeak3/TeamSpeak3.php");
+require_once("libraries/TeamSpeak/TeamSpeak.php");
   
 try
 {

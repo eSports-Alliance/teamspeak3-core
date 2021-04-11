@@ -17,23 +17,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Helper;
 
 use ArrayAccess;
 use Countable;
 use Iterator;
 use JsonSerializable;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
 
 /**
  * Class StringHelper
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Helper
+ * @package ESportsAlliance\TeamSpeakCore\Helper
  * @class StringHelper
  * @brief Helper class for string handling.
  */
@@ -328,7 +328,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
      */
     public function escape()
     {
-        foreach (TeamSpeak3::getEscapePatterns() as $search => $replace) {
+        foreach (TeamSpeak::getEscapePatterns() as $search => $replace) {
             $this->string = str_replace($search, $replace, $this->string);
         }
 
@@ -342,7 +342,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
      */
     public function unescape()
     {
-        $this->string = strtr($this->string, array_flip(TeamSpeak3::getEscapePatterns()));
+        $this->string = strtr($this->string, array_flip(TeamSpeak::getEscapePatterns()));
 
         return $this;
     }
@@ -489,7 +489,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     }
 
     /**
-     * Decodes the string with MIME base64 and returns the result as an PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper
+     * Decodes the string with MIME base64 and returns the result as an ESportsAlliance\TeamSpeakCore\Helper\StringHelper
      *
      * @param string $base64
      * @return self
@@ -516,7 +516,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper based on a given hex value.
+     * Returns the ESportsAlliance\TeamSpeakCore\Helper\StringHelper based on a given hex value.
      *
      * @param string $hex
      * @return self
@@ -796,7 +796,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     }
 
     /**
-     * Magical function that allows you to call PHP's built-in string functions on the PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper object.
+     * Magical function that allows you to call PHP's built-in string functions on the ESportsAlliance\TeamSpeakCore\Helper\StringHelper object.
      *
      * @param string $function
      * @param array $args

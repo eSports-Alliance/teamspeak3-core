@@ -17,26 +17,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
+namespace ESportsAlliance\TeamSpeakCore\Helper\Signal;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\FileTransfer;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Event;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Reply;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\SignalException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Host;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Server;
+use ESportsAlliance\TeamSpeakCore\Adapter\Adapter;
+use ESportsAlliance\TeamSpeakCore\Adapter\FileTransfer;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Event;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Reply;
+use ESportsAlliance\TeamSpeakCore\Exception\SignalException;
+use ESportsAlliance\TeamSpeakCore\Node\Host;
+use ESportsAlliance\TeamSpeakCore\Node\Server;
 
 /**
  * Interface SignalInterface
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal
+ * @package ESportsAlliance\TeamSpeakCore\Helper\Signal
  * @class SignalInterface
- * @brief Interface class describing the layout for PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal callbacks.
+ * @brief Interface class describing the layout for ESportsAlliance\TeamSpeakCore\Helper\Signal callbacks.
  */
 interface SignalInterface
 {
@@ -44,8 +44,8 @@ interface SignalInterface
      * Possible callback for '<adapter>Connected' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("serverqueryConnected", array($object, "onConnect"));
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferConnected", array($object, "onConnect"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("serverqueryConnected", array($object, "onConnect"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferConnected", array($object, "onConnect"));
      *
      * @param  Adapter $adapter
      * @return void
@@ -56,8 +56,8 @@ interface SignalInterface
      * Possible callback for '<adapter>Disconnected' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("serverqueryDisconnected", array($object, "onDisconnect"));
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferDisconnected", array($object, "onDisconnect"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("serverqueryDisconnected", array($object, "onDisconnect"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferDisconnected", array($object, "onDisconnect"));
      *
      * @return void
      */
@@ -67,7 +67,7 @@ interface SignalInterface
      * Possible callback for 'serverqueryCommandStarted' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("serverqueryCommandStarted", array($object, "onCommandStarted"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("serverqueryCommandStarted", array($object, "onCommandStarted"));
      *
      * @param  string $cmd
      * @return void
@@ -78,7 +78,7 @@ interface SignalInterface
      * Possible callback for 'serverqueryCommandFinished' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("serverqueryCommandFinished", array($object, "onCommandFinished"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("serverqueryCommandFinished", array($object, "onCommandFinished"));
      *
      * @param  string $cmd
      * @param  Reply $reply
@@ -90,7 +90,7 @@ interface SignalInterface
      * Possible callback for 'notifyEvent' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyEvent", array($object, "onEvent"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyEvent", array($object, "onEvent"));
      *
      * @param  Event $event
      * @param  Host $host
@@ -102,7 +102,7 @@ interface SignalInterface
      * Possible callback for 'notifyError' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyError", array($object, "onError"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyError", array($object, "onError"));
      *
      * @param  Reply $reply
      * @return void
@@ -113,7 +113,7 @@ interface SignalInterface
      * Possible callback for 'notifyServerselected' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyServerselected", array($object, "onServerselected"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyServerselected", array($object, "onServerselected"));
      *
      * @param  Host $host
      * @return void
@@ -124,7 +124,7 @@ interface SignalInterface
      * Possible callback for 'notifyServercreated' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyServercreated", array($object, "onServercreated"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyServercreated", array($object, "onServercreated"));
      *
      * @param  Host $host
      * @param  integer $sid
@@ -136,7 +136,7 @@ interface SignalInterface
      * Possible callback for 'notifyServerdeleted' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyServerdeleted", array($object, "onServerdeleted"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyServerdeleted", array($object, "onServerdeleted"));
      *
      * @param  Host $host
      * @param  integer $sid
@@ -148,7 +148,7 @@ interface SignalInterface
      * Possible callback for 'notifyServerstarted' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyServerstarted", array($object, "onServerstarted"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyServerstarted", array($object, "onServerstarted"));
      *
      * @param  Host $host
      * @param  integer $sid
@@ -160,7 +160,7 @@ interface SignalInterface
      * Possible callback for 'notifyServerstopped' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyServerstopped", array($object, "onServerstopped"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyServerstopped", array($object, "onServerstopped"));
      *
      * @param  Host $host
      * @param  integer $sid
@@ -172,7 +172,7 @@ interface SignalInterface
      * Possible callback for 'notifyServershutdown' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyServershutdown", array($object, "onServershutdown"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyServershutdown", array($object, "onServershutdown"));
      *
      * @param  Host $host
      * @return void
@@ -183,7 +183,7 @@ interface SignalInterface
      * Possible callback for 'notifyLogin' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyLogin", array($object, "onLogin"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyLogin", array($object, "onLogin"));
      *
      * @param  Host $host
      * @return void
@@ -194,7 +194,7 @@ interface SignalInterface
      * Possible callback for 'notifyLogout' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyLogout", array($object, "onLogout"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyLogout", array($object, "onLogout"));
      *
      * @param  Host $host
      * @return void
@@ -205,7 +205,7 @@ interface SignalInterface
      * Possible callback for 'notifyTokencreated' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("notifyTokencreated", array($object, "onTokencreated"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("notifyTokencreated", array($object, "onTokencreated"));
      *
      * @param  Server $server
      * @param  string $token
@@ -217,7 +217,7 @@ interface SignalInterface
      * Possible callback for 'filetransferHandshake' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferHandshake", array($object, "onFtHandshake"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferHandshake", array($object, "onFtHandshake"));
      *
      * @param  FileTransfer $adapter
      * @return void
@@ -228,7 +228,7 @@ interface SignalInterface
      * Possible callback for 'filetransferUploadStarted' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferUploadStarted", array($object, "onFtUploadStarted"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferUploadStarted", array($object, "onFtUploadStarted"));
      *
      * @param  string  $ftkey
      * @param  integer $seek
@@ -241,7 +241,7 @@ interface SignalInterface
      * Possible callback for 'filetransferUploadProgress' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferUploadProgress", array($object, "onFtUploadProgress"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferUploadProgress", array($object, "onFtUploadProgress"));
      *
      * @param  string  $ftkey
      * @param  integer $seek
@@ -254,7 +254,7 @@ interface SignalInterface
      * Possible callback for 'filetransferUploadFinished' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferUploadFinished", array($object, "onFtUploadFinished"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferUploadFinished", array($object, "onFtUploadFinished"));
      *
      * @param  string  $ftkey
      * @param  integer $seek
@@ -267,7 +267,7 @@ interface SignalInterface
      * Possible callback for 'filetransferDownloadStarted' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferDownloadStarted", array($object, "onFtDownloadStarted"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferDownloadStarted", array($object, "onFtDownloadStarted"));
      *
      * @param  string  $ftkey
      * @param  integer $buff
@@ -280,7 +280,7 @@ interface SignalInterface
      * Possible callback for 'filetransferDownloadProgress' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferDownloadProgress", array($object, "onFtDownloadProgress"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferDownloadProgress", array($object, "onFtDownloadProgress"));
      *
      * @param  string  $ftkey
      * @param  integer $buff
@@ -293,7 +293,7 @@ interface SignalInterface
      * Possible callback for 'filetransferDownloadFinished' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferDownloadFinished", array($object, "onFtDownloadFinished"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferDownloadFinished", array($object, "onFtDownloadFinished"));
      *
      * @param  string  $ftkey
      * @param  integer $buff
@@ -306,8 +306,8 @@ interface SignalInterface
      * Possible callback for '<adapter>DataRead' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("serverqueryDataRead", array($object, "onDebugDataRead"));
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferDataRead", array($object, "onDebugDataRead"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("serverqueryDataRead", array($object, "onDebugDataRead"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferDataRead", array($object, "onDebugDataRead"));
      *
      * @param  string $data
      * @return void
@@ -318,8 +318,8 @@ interface SignalInterface
      * Possible callback for '<adapter>DataSend' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("serverqueryDataSend", array($object, "onDebugDataSend"));
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferDataSend", array($object, "onDebugDataSend"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("serverqueryDataSend", array($object, "onDebugDataSend"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferDataSend", array($object, "onDebugDataSend"));
      *
      * @param  string $data
      * @return void
@@ -330,8 +330,8 @@ interface SignalInterface
      * Possible callback for '<adapter>WaitTimeout' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("serverqueryWaitTimeout", array($object, "onWaitTimeout"));
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("filetransferWaitTimeout", array($object, "onWaitTimeout"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("serverqueryWaitTimeout", array($object, "onWaitTimeout"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("filetransferWaitTimeout", array($object, "onWaitTimeout"));
      *
      * @param  integer $time
      * @param  Adapter $adapter
@@ -343,7 +343,7 @@ interface SignalInterface
      * Possible callback for 'errorException' signals.
      *
      * === Examples ===
-     *   - PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal::getInstance()->subscribe("errorException", array($object, "onException"));
+     *   - ESportsAlliance\TeamSpeakCore\Helper\Signal::getInstance()->subscribe("errorException", array($object, "onException"));
      *
      * @param  SignalException $e
      * @return void

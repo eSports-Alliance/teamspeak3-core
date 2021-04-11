@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Exception;
+namespace ESportsAlliance\TeamSpeakCore\Exception;
 
 use Exception;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
 
 /**
- * Class TeamSpeak3Exception
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Exception
- * @class TeamSpeak3Exception
- * @brief Enhanced exception class for TeamSpeak3 objects.
+ * Class TeamSpeakException
+ * @package ESportsAlliance\TeamSpeakCore\Exception
+ * @class TeamSpeakException
+ * @brief Enhanced exception class for TeamSpeak objects.
  */
-class TeamSpeak3Exception extends Exception
+class TeamSpeakException extends Exception
 {
     /**
      * Stores the original error code.
@@ -58,7 +58,7 @@ class TeamSpeak3Exception extends Exception
     protected static $messages = [];
 
     /**
-     * The TeamSpeak3Exception constructor.
+     * The TeamSpeakException constructor.
      *
      * @param  string  $mesg
      * @param  integer $code
@@ -101,7 +101,7 @@ class TeamSpeak3Exception extends Exception
      * @param  integer $code
      * @param  string  $mesg
      * @return void
-     *@throws TeamSpeak3Exception
+     *@throws TeamSpeakException
      */
     public static function registerCustomMessage($code, $mesg)
     {
@@ -121,7 +121,7 @@ class TeamSpeak3Exception extends Exception
      *
      * @param  integer $code
      * @return void
-     * @throws TeamSpeak3Exception
+     * @throws TeamSpeakException
      */
     public static function unregisterCustomMessage($code)
     {

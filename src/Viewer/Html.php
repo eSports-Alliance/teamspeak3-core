@@ -17,26 +17,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Viewer;
+namespace ESportsAlliance\TeamSpeakCore\Viewer;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Convert;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\ChannelGroup;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Client;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Node;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Server;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\ServerGroup;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\Helper\Convert;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Node\Channel;
+use ESportsAlliance\TeamSpeakCore\Node\ChannelGroup;
+use ESportsAlliance\TeamSpeakCore\Node\Client;
+use ESportsAlliance\TeamSpeakCore\Node\Node;
+use ESportsAlliance\TeamSpeakCore\Node\Server;
+use ESportsAlliance\TeamSpeakCore\Node\ServerGroup;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 
 /**
  * Class Html
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Viewer
+ * @package ESportsAlliance\TeamSpeakCore\Viewer
  * @class Html
  * @brief Renders nodes used in HTML-based TeamSpeak 3 viewers.
  */
@@ -50,14 +50,14 @@ class Html implements ViewerInterface
     protected $pattern = "<table id='%0' class='%1' summary='%2'><tr class='%3'><td class='%4'>%5</td><td class='%6' title='%7'>%8 %9</td><td class='%10'>%11%12</td></tr></table>\n";
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\Node\Node object which is currently processed.
+     * The ESportsAlliance\TeamSpeakCore\Node\Node object which is currently processed.
      *
      * @var Node
      */
     protected $currObj = null;
 
     /**
-     * An array filled with siblings for the PlanetTeamSpeak\TeamSpeak3Framework\Node\Node object which is currently
+     * An array filled with siblings for the ESportsAlliance\TeamSpeakCore\Node\Node object which is currently
      * processed.
      *
      * @var array
@@ -65,7 +65,7 @@ class Html implements ViewerInterface
     protected $currSib = null;
 
     /**
-     * An internal counter indicating the number of fetched PlanetTeamSpeak\TeamSpeak3Framework\Node\Node objects.
+     * An internal counter indicating the number of fetched ESportsAlliance\TeamSpeakCore\Node\Node objects.
      *
      * @var integer
      */
@@ -247,37 +247,37 @@ class Html implements ViewerInterface
 
         if ($this->currObj instanceof Channel && $this->currObj->isSpacer()) {
             switch ($this->currObj->spacerGetType()) {
-        case (string) TeamSpeak3::SPACER_SOLIDLINE:
+        case (string) TeamSpeak::SPACER_SOLIDLINE:
           $extras .= " solidline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DASHLINE:
+        case (string) TeamSpeak::SPACER_DASHLINE:
           $extras .= " dashline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DASHDOTLINE:
+        case (string) TeamSpeak::SPACER_DASHDOTLINE:
           $extras .= " dashdotline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DASHDOTDOTLINE:
+        case (string) TeamSpeak::SPACER_DASHDOTDOTLINE:
           $extras .= " dashdotdotline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DOTLINE:
+        case (string) TeamSpeak::SPACER_DOTLINE:
           $extras .= " dotline";
           break;
       }
 
             switch ($this->currObj->spacerGetAlign()) {
-        case TeamSpeak3::SPACER_ALIGN_CENTER:
+        case TeamSpeak::SPACER_ALIGN_CENTER:
           $extras .= " center";
           break;
 
-        case TeamSpeak3::SPACER_ALIGN_RIGHT:
+        case TeamSpeak::SPACER_ALIGN_RIGHT:
           $extras .= " right";
           break;
 
-        case TeamSpeak3::SPACER_ALIGN_LEFT:
+        case TeamSpeak::SPACER_ALIGN_LEFT:
           $extras .= " left";
           break;
       }
@@ -331,13 +331,13 @@ class Html implements ViewerInterface
     protected function getCorpusName()
     {
         if ($this->currObj instanceof Channel && $this->currObj->isSpacer()) {
-            if ($this->currObj->spacerGetType() != TeamSpeak3::SPACER_CUSTOM) {
+            if ($this->currObj->spacerGetType() != TeamSpeak::SPACER_CUSTOM) {
                 return;
             }
 
             $string = $this->currObj["channel_name"]->section("]", 1, 99);
 
-            if ($this->currObj->spacerGetAlign() == TeamSpeak3::SPACER_ALIGN_REPEAT) {
+            if ($this->currObj->spacerGetAlign() == TeamSpeak::SPACER_ALIGN_REPEAT) {
                 $string->resize(30, $string);
             }
 
@@ -350,9 +350,9 @@ class Html implements ViewerInterface
 
             if (!$this->currObj->client_is_recording) {
                 foreach ($this->currObj->memberOf() as $group) {
-                    if ($group->getProperty("namemode") == TeamSpeak3::GROUP_NAMEMODE_BEFORE) {
+                    if ($group->getProperty("namemode") == TeamSpeak::GROUP_NAMEMODE_BEFORE) {
                         $before[] = "[" . htmlspecialchars($group["name"]) . "]";
-                    } elseif ($group->getProperty("namemode") == TeamSpeak3::GROUP_NAMEMODE_BEHIND) {
+                    } elseif ($group->getProperty("namemode") == TeamSpeak::GROUP_NAMEMODE_BEHIND) {
                         $behind[] = "[" . htmlspecialchars($group["name"]) . "]";
                     }
                 }
@@ -411,7 +411,7 @@ class Html implements ViewerInterface
                     $download = $this->currObj->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("virtualserver_icon_id"));
 
                     if ($this->ftclient == "data:image") {
-                        $download = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
+                        $download = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
                     }
 
                     $this->cacheIcon[$this->currObj["virtualserver_icon_id"]] = $download;
@@ -454,7 +454,7 @@ class Html implements ViewerInterface
             $html .= $this->getImage("channel_flag_password.png", "Password-protected");
         }
 
-        if ($this->currObj["channel_codec"] == TeamSpeak3::CODEC_CELT_MONO || $this->currObj["channel_codec"] == TeamSpeak3::CODEC_OPUS_MUSIC) {
+        if ($this->currObj["channel_codec"] == TeamSpeak::CODEC_CELT_MONO || $this->currObj["channel_codec"] == TeamSpeak::CODEC_OPUS_MUSIC) {
             $html .= $this->getImage("channel_flag_music.png", "Music Codec");
         }
 
@@ -468,7 +468,7 @@ class Html implements ViewerInterface
                     $download = $this->currObj->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("channel_icon_id"));
 
                     if ($this->ftclient == "data:image") {
-                        $download = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
+                        $download = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
                     }
 
                     $this->cacheIcon[$this->currObj["channel_icon_id"]] = $download;
@@ -527,7 +527,7 @@ class Html implements ViewerInterface
                     $download = $group->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $group->iconGetName("iconid"));
 
                     if ($this->ftclient == "data:image") {
-                        $download = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
+                        $download = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
                     }
 
                     $this->cacheIcon[$group["iconid"]] = $download;
@@ -551,7 +551,7 @@ class Html implements ViewerInterface
                     $download = $this->currObj->getParent()->transferInitDownload(rand(0x0000, 0xFFFF), 0, $this->currObj->iconGetName("client_icon_id"));
 
                     if ($this->ftclient == "data:image") {
-                        $download = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
+                        $download = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"])->download($download["ftkey"], $download["size"]);
                     }
 
                     $this->cacheIcon[$this->currObj["client_icon_id"]] = $download;

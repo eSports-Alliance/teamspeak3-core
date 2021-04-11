@@ -17,31 +17,31 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Adapter;
+namespace ESportsAlliance\TeamSpeakCore\Adapter;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\FileTransferException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\TransportException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Profiler;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Exception\FileTransferException;
+use ESportsAlliance\TeamSpeakCore\Exception\TransportException;
+use ESportsAlliance\TeamSpeakCore\Helper\Profiler;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Transport\Transport;
 
 /**
  * Class FileTransfer
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Adapter
+ * @package ESportsAlliance\TeamSpeakCore\Adapter
  * @class FileTransfer
  * @brief Provides low-level methods for file transfer communication with a TeamSpeak 3 Server.
  */
 class FileTransfer extends Adapter
 {
     /**
-     * Connects the PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport object and performs initial actions on the remote server.
+     * Connects the ESportsAlliance\TeamSpeakCore\Transport\Transport object and performs initial actions on the remote server.
      * @throws AdapterException
      */
     public function syn()
@@ -123,7 +123,7 @@ class FileTransfer extends Adapter
     }
 
     /**
-     * Returns the content of a downloaded file as a PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper object.
+     * Returns the content of a downloaded file as a ESportsAlliance\TeamSpeakCore\Helper\StringHelper object.
      *
      * @param string $ftkey
      * @param integer $size

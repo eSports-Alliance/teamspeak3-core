@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Helper;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
 
 /**
  * Class Char
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Helper
+ * @package ESportsAlliance\TeamSpeakCore\Helper
  * @class Char
  * @brief Helper class for char handling.
  */
@@ -213,7 +213,7 @@ class Char
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Helper\Char based on a given hex value.
+     * Returns the ESportsAlliance\TeamSpeakCore\Helper\Char based on a given hex value.
      *
      * @param string $hex
      * @return Char

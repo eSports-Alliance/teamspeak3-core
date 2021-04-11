@@ -17,18 +17,18 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Helper;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Profiler\Timer;
+use ESportsAlliance\TeamSpeakCore\Helper\Profiler\Timer;
 
 /**
  * Class Profiler
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Helper
+ * @package ESportsAlliance\TeamSpeakCore\Helper
  * @class Profiler
  * @brief Helper class for profiler handling.
  */

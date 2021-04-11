@@ -17,27 +17,27 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Helper;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\SignalException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal\Handler;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\Exception\SignalException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal\Handler;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
 
 /**
  * Class Signal
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Helper
+ * @package ESportsAlliance\TeamSpeakCore\Helper
  * @class Signal
  * @brief Helper class for signal slots.
  */
 class Signal
 {
     /**
-     * Stores the PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal object.
+     * Stores the ESportsAlliance\TeamSpeakCore\Helper\Signal object.
      *
      * @var Signal
      */
@@ -195,7 +195,7 @@ class Signal
     }
 
     /**
-     * Returns a singleton instance of PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal.
+     * Returns a singleton instance of ESportsAlliance\TeamSpeakCore\Helper\Signal.
      *
      * @return Signal
      */

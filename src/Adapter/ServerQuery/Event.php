@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery;
+namespace ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery;
 
 use ArrayAccess;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\NodeException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Host;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Exception\NodeException;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Node\Host;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 /**
  * Class Event
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery
+ * @package ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery
  * @class Event
  * @brief Provides methods to analyze and format a ServerQuery event.
  */
@@ -62,7 +62,7 @@ class Event implements ArrayAccess
     protected $mesg = null;
 
     /**
-     * Creates a new PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Event object.
+     * Creates a new ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Event object.
      *
      * @param  StringHelper $evt
      * @param  Host     $con
@@ -70,20 +70,20 @@ class Event implements ArrayAccess
      */
     public function __construct(StringHelper $evt, Host $con = null)
     {
-        if (!$evt->startsWith(TeamSpeak3::EVENT)) {
+        if (!$evt->startsWith(TeamSpeak::EVENT)) {
             throw new AdapterException("invalid notification event format");
         }
 
-        list($type, $data) = $evt->split(TeamSpeak3::SEPARATOR_CELL, 2);
+        list($type, $data) = $evt->split(TeamSpeak::SEPARATOR_CELL, 2);
 
         if (empty($data)) {
             throw new AdapterException("invalid notification event data");
         }
 
-        $fake = new StringHelper(TeamSpeak3::ERROR . TeamSpeak3::SEPARATOR_CELL . "id" . TeamSpeak3::SEPARATOR_PAIR . 0 . TeamSpeak3::SEPARATOR_CELL . "msg" . TeamSpeak3::SEPARATOR_PAIR . "ok");
+        $fake = new StringHelper(TeamSpeak::ERROR . TeamSpeak::SEPARATOR_CELL . "id" . TeamSpeak::SEPARATOR_PAIR . 0 . TeamSpeak::SEPARATOR_CELL . "msg" . TeamSpeak::SEPARATOR_PAIR . "ok");
         $repl = new Reply([$data, $fake], $type);
 
-        $this->type = $type->substr(strlen(TeamSpeak3::EVENT));
+        $this->type = $type->substr(strlen(TeamSpeak::EVENT));
         $this->data = $repl->toList();
         $this->mesg = $data;
 

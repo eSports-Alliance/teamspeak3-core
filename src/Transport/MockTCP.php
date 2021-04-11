@@ -1,13 +1,13 @@
 <?php
 
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Transport;
+namespace ESportsAlliance\TeamSpeakCore\Transport;
 
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\TransportException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Exception\TransportException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
 
 class MockTCP extends TCP
 {

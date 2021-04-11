@@ -17,24 +17,24 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Reply;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\NodeException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Reply;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Exception\NodeException;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
 
 /**
  * Class Server
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Node
+ * @package ESportsAlliance\TeamSpeakCore\Node
  * @class Server
  * @brief Class describing a TeamSpeak 3 virtual server and all it's parameters.
  */
@@ -95,7 +95,7 @@ class Server extends Node
     }
 
     /**
-     * Returns an array filled with PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel objects.
+     * Returns an array filled with ESportsAlliance\TeamSpeakCore\Node\Channel objects.
      *
      * @param array $filter
      * @return array|Channel[]
@@ -127,7 +127,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel object representing the default channel.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Channel object representing the default channel.
      *
      * @return Channel
      * @throws ServerQueryException
@@ -189,7 +189,7 @@ class Server extends Node
     }
 
     /**
-     * Returns TRUE if the given PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel object is a spacer.
+     * Returns TRUE if the given ESportsAlliance\TeamSpeakCore\Node\Channel object is a spacer.
      *
      * @param Channel $channel
      * @return boolean
@@ -212,14 +212,14 @@ class Server extends Node
      */
     public function channelSpacerCreate(
         $ident,
-        $type = TeamSpeak3::SPACER_SOLIDLINE,
-        $align = TeamSpeak3::SPACER_ALIGN_REPEAT,
+        $type = TeamSpeak::SPACER_SOLIDLINE,
+        $align = TeamSpeak::SPACER_ALIGN_REPEAT,
         $order = null,
         $maxclients = 0
     ) {
         $properties = [
             "channel_name_phonetic" => "channel spacer",
-            "channel_codec" => TeamSpeak3::CODEC_OPUS_VOICE,
+            "channel_codec" => TeamSpeak::CODEC_OPUS_VOICE,
             "channel_codec_quality" => 0x00,
             "channel_flag_permanent" => true,
             "channel_flag_maxclients_unlimited" => false,
@@ -230,19 +230,19 @@ class Server extends Node
         ];
 
         switch ($align) {
-            case TeamSpeak3::SPACER_ALIGN_REPEAT:
+            case TeamSpeak::SPACER_ALIGN_REPEAT:
                 $properties["channel_name"] = "[*spacer" . strval($ident) . "]";
                 break;
 
-            case TeamSpeak3::SPACER_ALIGN_LEFT:
+            case TeamSpeak::SPACER_ALIGN_LEFT:
                 $properties["channel_name"] = "[lspacer" . strval($ident) . "]";
                 break;
 
-            case TeamSpeak3::SPACER_ALIGN_RIGHT:
+            case TeamSpeak::SPACER_ALIGN_RIGHT:
                 $properties["channel_name"] = "[rspacer" . strval($ident) . "]";
                 break;
 
-            case TeamSpeak3::SPACER_ALIGN_CENTER:
+            case TeamSpeak::SPACER_ALIGN_CENTER:
                 $properties["channel_name"] = "[cspacer" . strval($ident) . "]";
                 break;
 
@@ -252,23 +252,23 @@ class Server extends Node
         }
 
         switch ($type) {
-            case (string)TeamSpeak3::SPACER_SOLIDLINE:
+            case (string)TeamSpeak::SPACER_SOLIDLINE:
                 $properties["channel_name"] .= "___";
                 break;
 
-            case (string)TeamSpeak3::SPACER_DASHLINE:
+            case (string)TeamSpeak::SPACER_DASHLINE:
                 $properties["channel_name"] .= "---";
                 break;
 
-            case (string)TeamSpeak3::SPACER_DOTLINE:
+            case (string)TeamSpeak::SPACER_DOTLINE:
                 $properties["channel_name"] .= "...";
                 break;
 
-            case (string)TeamSpeak3::SPACER_DASHDOTLINE:
+            case (string)TeamSpeak::SPACER_DASHDOTLINE:
                 $properties["channel_name"] .= "-.-";
                 break;
 
-            case (string)TeamSpeak3::SPACER_DASHDOTDOTLINE:
+            case (string)TeamSpeak::SPACER_DASHDOTDOTLINE:
                 $properties["channel_name"] .= "-..";
                 break;
 
@@ -296,22 +296,22 @@ class Server extends Node
 
         switch ($channel["channel_name"]->section("]", 1)) {
             case "___":
-                return TeamSpeak3::SPACER_SOLIDLINE;
+                return TeamSpeak::SPACER_SOLIDLINE;
 
             case "---":
-                return TeamSpeak3::SPACER_DASHLINE;
+                return TeamSpeak::SPACER_DASHLINE;
 
             case "...":
-                return TeamSpeak3::SPACER_DOTLINE;
+                return TeamSpeak::SPACER_DOTLINE;
 
             case "-.-":
-                return TeamSpeak3::SPACER_DASHDOTLINE;
+                return TeamSpeak::SPACER_DASHDOTLINE;
 
             case "-..":
-                return TeamSpeak3::SPACER_DASHDOTDOTLINE;
+                return TeamSpeak::SPACER_DASHDOTDOTLINE;
 
             default:
-                return TeamSpeak3::SPACER_CUSTOM;
+                return TeamSpeak::SPACER_CUSTOM;
         }
     }
 
@@ -331,16 +331,16 @@ class Server extends Node
 
         switch ($matches[1]) {
             case "*":
-                return TeamSpeak3::SPACER_ALIGN_REPEAT;
+                return TeamSpeak::SPACER_ALIGN_REPEAT;
 
             case "c":
-                return TeamSpeak3::SPACER_ALIGN_CENTER;
+                return TeamSpeak::SPACER_ALIGN_CENTER;
 
             case "r":
-                return TeamSpeak3::SPACER_ALIGN_RIGHT;
+                return TeamSpeak::SPACER_ALIGN_RIGHT;
 
             default:
-                return TeamSpeak3::SPACER_ALIGN_LEFT;
+                return TeamSpeak::SPACER_ALIGN_LEFT;
         }
     }
 
@@ -472,7 +472,7 @@ class Server extends Node
 
             $files[$i]["src"]->append($files[$i]["name"]);
 
-            if ($recursive && $files[$i]["type"] == TeamSpeak3::FILE_TYPE_DIRECTORY) {
+            if ($recursive && $files[$i]["type"] == TeamSpeak::FILE_TYPE_DIRECTORY) {
                 $files = array_merge($files, $this->channelFileList($cid, $cpw, $path . $files[$i]["name"], $recursive));
             }
         }
@@ -571,7 +571,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel object matching the given ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Channel object matching the given ID.
      *
      * @param integer $cid
      * @return Channel
@@ -586,7 +586,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel object matching the given name.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Channel object matching the given name.
      *
      * @param string $name
      * @return Channel
@@ -603,7 +603,7 @@ class Server extends Node
     }
 
     /**
-     * Returns an array filled with PlanetTeamSpeak\TeamSpeak3Framework\Node\Client objects.
+     * Returns an array filled with ESportsAlliance\TeamSpeakCore\Node\Client objects.
      *
      * @param array $filter
      * @return array|Client[]
@@ -710,7 +710,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Client object matching the given ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Client object matching the given ID.
      *
      * @param integer $clid
      * @return Client
@@ -725,7 +725,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Client object matching the given name.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Client object matching the given name.
      *
      * @param string $name
      * @return Client
@@ -742,7 +742,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Client object matching the given unique identifier.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Client object matching the given unique identifier.
      *
      * @param string $uid
      * @return Client
@@ -759,7 +759,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Client object matching the given database ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Client object matching the given database ID.
      *
      * @param integer $dbid
      * @return Client
@@ -853,7 +853,7 @@ class Server extends Node
      * @param string $reasonmsg
      * @return void
      */
-    public function clientKick($clid, $reasonid = TeamSpeak3::KICK_CHANNEL, $reasonmsg = null) {
+    public function clientKick($clid, $reasonid = TeamSpeak::KICK_CHANNEL, $reasonmsg = null) {
         $this->clientListReset();
 
         $this->execute("clientkick", ["clid" => $clid, "reasonid" => $reasonid, "reasonmsg" => $reasonmsg]);
@@ -1012,7 +1012,7 @@ class Server extends Node
      * @param integer $type
      * @return integer
      */
-    public function serverGroupCreate($name, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+    public function serverGroupCreate($name, $type = TeamSpeak::GROUP_DBTYPE_REGULAR) {
         $this->serverGroupListReset();
 
         $sgid = $this->execute("servergroupadd", ["name" => $name, "type" => $type])->toList();
@@ -1029,7 +1029,7 @@ class Server extends Node
      * @param integer $type
      * @return integer
      */
-    public function serverGroupCopy($ssgid, $name = null, $tsgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+    public function serverGroupCopy($ssgid, $name = null, $tsgid = 0, $type = TeamSpeak::GROUP_DBTYPE_REGULAR) {
         $this->serverGroupListReset();
 
         $sgid = $this->execute("servergroupcopy", ["ssgid" => $ssgid, "tsgid" => $tsgid, "name" => $name, "type" => $type])
@@ -1070,7 +1070,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Servergroup object matching the given ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Servergroup object matching the given ID.
      *
      * @param integer $sgid
      * @return ServerGroup
@@ -1085,14 +1085,14 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Servergroup object matching the given name.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Servergroup object matching the given name.
      *
      * @param string $name
      * @param integer $type
      * @return ServerGroup
      * @throws ServerQueryException
      */
-    public function serverGroupGetByName($name, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+    public function serverGroupGetByName($name, $type = TeamSpeak::GROUP_DBTYPE_REGULAR) {
         foreach ($this->serverGroupList() as $group) {
             if ($group["name"] == $name && $group["type"] == $type) {
                 return $group;
@@ -1202,7 +1202,7 @@ class Server extends Node
      * @return array
      * @throws ServerQueryException
      */
-    public function serverGroupGetProfiles($type = TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+    public function serverGroupGetProfiles($type = TeamSpeak::GROUP_DBTYPE_REGULAR) {
         $profiles = [];
 
         foreach ($this->serverGroupList() as $sgid => $sgroup) {
@@ -1276,12 +1276,12 @@ class Server extends Node
      * @throws ServerQueryException
      */
     public function serverGroupIdentify(
-        $mode = TeamSpeak3::GROUP_IDENTIFIY_STRONGEST,
-        $type = TeamSpeak3::GROUP_DBTYPE_REGULAR
+        $mode = TeamSpeak::GROUP_IDENTIFIY_STRONGEST,
+        $type = TeamSpeak::GROUP_DBTYPE_REGULAR
     ) {
         $profiles = $this->serverGroupGetProfiles($type);
 
-        $best_guess_profile = ($mode == TeamSpeak3::GROUP_IDENTIFIY_STRONGEST) ? array_shift($profiles) : array_pop($profiles);
+        $best_guess_profile = ($mode == TeamSpeak::GROUP_IDENTIFIY_STRONGEST) ? array_shift($profiles) : array_pop($profiles);
 
         return $this->serverGroupGetById($best_guess_profile["__sgid"]);
     }
@@ -1323,7 +1323,7 @@ class Server extends Node
      * @param integer $type
      * @return integer
      */
-    public function channelGroupCreate($name, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+    public function channelGroupCreate($name, $type = TeamSpeak::GROUP_DBTYPE_REGULAR) {
         $this->channelGroupListReset();
 
         $cgid = $this->execute("channelgroupadd", ["name" => $name, "type" => $type])->toList();
@@ -1340,7 +1340,7 @@ class Server extends Node
      * @param integer $type
      * @return integer
      */
-    public function channelGroupCopy($scgid, $name = null, $tcgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+    public function channelGroupCopy($scgid, $name = null, $tcgid = 0, $type = TeamSpeak::GROUP_DBTYPE_REGULAR) {
         $this->channelGroupListReset();
 
         $cgid = $this->execute("channelgroupcopy", ["scgid" => $scgid, "tcgid" => $tcgid, "name" => $name, "type" => $type])
@@ -1381,7 +1381,7 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Channelgroup object matching the given ID.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Channelgroup object matching the given ID.
      *
      * @param integer $cgid
      * @return ChannelGroup
@@ -1396,14 +1396,14 @@ class Server extends Node
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Node\Channelgroup object matching the given name.
+     * Returns the ESportsAlliance\TeamSpeakCore\Node\Channelgroup object matching the given name.
      *
      * @param string $name
      * @param integer $type
      * @return ChannelGroup
      * @throws ServerQueryException
      */
-    public function channelGroupGetByName($name, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR) {
+    public function channelGroupGetByName($name, $type = TeamSpeak::GROUP_DBTYPE_REGULAR) {
         foreach ($this->channelGroupList() as $group) {
             if ($group["name"] == $name && $group["type"] == $type) {
                 return $group;
@@ -1529,23 +1529,23 @@ class Server extends Node
 
         foreach ($assignments as $assignment) {
             switch ($assignment["t"]) {
-                case TeamSpeak3::PERM_TYPE_SERVERGROUP:
+                case TeamSpeak::PERM_TYPE_SERVERGROUP:
                     $this->serverGroupPermRemove($assignment["id1"], $assignment["p"]);
                     break;
 
-                case TeamSpeak3::PERM_TYPE_CLIENT:
+                case TeamSpeak::PERM_TYPE_CLIENT:
                     $this->clientPermRemove($assignment["id1"], $assignment["p"]);
                     break;
 
-                case TeamSpeak3::PERM_TYPE_CHANNEL:
+                case TeamSpeak::PERM_TYPE_CHANNEL:
                     $this->channelPermRemove($assignment["id1"], $assignment["p"]);
                     break;
 
-                case TeamSpeak3::PERM_TYPE_CHANNELGROUP:
+                case TeamSpeak::PERM_TYPE_CHANNELGROUP:
                     $this->channelGroupPermRemove($assignment["id2"], $assignment["p"]);
                     break;
 
-                case TeamSpeak3::PERM_TYPE_CHANNELCLIENT:
+                case TeamSpeak::PERM_TYPE_CHANNELCLIENT:
                     $this->channelClientPermRemove($assignment["id1"], $assignment["id2"], $assignment["p"]);
                     break;
 
@@ -1678,7 +1678,7 @@ class Server extends Node
         }
 
         $download = $this->transferInitDownload(rand(0x0000, 0xFFFF), 0, $name);
-        $transfer = TeamSpeak3::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
+        $transfer = TeamSpeak::factory("filetransfer://" . (strstr($download["host"], ":") !== false ? "[" . $download["host"] . "]" : $download["host"]) . ":" . $download["port"]);
 
         return $transfer->download($download["ftkey"], $download["size"]);
     }
@@ -1695,7 +1695,7 @@ class Server extends Node
         $size = strlen($data);
 
         $upload = $this->transferInitUpload(rand(0x0000, 0xFFFF), 0, "/icon_" . $crc, $size);
-        $transfer = TeamSpeak3::factory("filetransfer://" . (strstr($upload["host"], ":") !== false ? "[" . $upload["host"] . "]" : $upload["host"]) . ":" . $upload["port"]);
+        $transfer = TeamSpeak::factory("filetransfer://" . (strstr($upload["host"], ":") !== false ? "[" . $upload["host"] . "]" : $upload["host"]) . ":" . $upload["port"]);
 
         $transfer->upload($upload["ftkey"], $upload["seekpos"], $data);
 
@@ -1720,7 +1720,7 @@ class Server extends Node
      * @return void
      */
     public function message($msg) {
-        $this->execute("sendtextmessage", ["msg" => $msg, "target" => $this->getId(), "targetmode" => TeamSpeak3::TEXTMSG_SERVER]);
+        $this->execute("sendtextmessage", ["msg" => $msg, "target" => $this->getId(), "targetmode" => TeamSpeak::TEXTMSG_SERVER]);
     }
 
     /**
@@ -1778,15 +1778,15 @@ class Server extends Node
      * @param int $mode
      * @return string
      */
-    public function snapshotCreate($mode = TeamSpeak3::SNAPSHOT_STRING) {
+    public function snapshotCreate($mode = TeamSpeak::SNAPSHOT_STRING) {
         $snapshot = $this->request("serversnapshotcreate")->toString(false);
 
         switch ($mode) {
-            case TeamSpeak3::SNAPSHOT_BASE64:
+            case TeamSpeak::SNAPSHOT_BASE64:
                 return $snapshot->toBase64();
                 break;
 
-            case TeamSpeak3::SNAPSHOT_HEXDEC:
+            case TeamSpeak::SNAPSHOT_HEXDEC:
                 return $snapshot->toHex();
                 break;
 
@@ -1805,13 +1805,13 @@ class Server extends Node
      * @return array
      * @throws HelperException
      */
-    public function snapshotDeploy($data, $mode = TeamSpeak3::SNAPSHOT_STRING) {
+    public function snapshotDeploy($data, $mode = TeamSpeak::SNAPSHOT_STRING) {
         switch ($mode) {
-            case TeamSpeak3::SNAPSHOT_BASE64:
+            case TeamSpeak::SNAPSHOT_BASE64:
                 $data = StringHelper::fromBase64($data);
                 break;
 
-            case TeamSpeak3::SNAPSHOT_HEXDEC:
+            case TeamSpeak::SNAPSHOT_HEXDEC:
                 $data = StringHelper::fromHex($data);
                 break;
 
@@ -1916,7 +1916,7 @@ class Server extends Node
      * @deprecated
      */
     public function tokenCreate(
-        $type = TeamSpeak3::TOKEN_SERVERGROUP,
+        $type = TeamSpeak::TOKEN_SERVERGROUP,
         $id1,
         $id2 = 0,
         $description = null,
@@ -1938,7 +1938,7 @@ class Server extends Node
     public function privilegeKeyCreate(
         $id1,
         $id2 = 0,
-        $type = TeamSpeak3::TOKEN_SERVERGROUP,
+        $type = TeamSpeak::TOKEN_SERVERGROUP,
         $description = null,
         $customset = null
     ) {
@@ -2207,7 +2207,7 @@ class Server extends Node
      * @param integer $loglevel
      * @return void
      */
-    public function logAdd($logmsg, $loglevel = TeamSpeak3::LOGLEVEL_INFO) {
+    public function logAdd($logmsg, $loglevel = TeamSpeak::LOGLEVEL_INFO) {
         $this->execute("logadd", ["logmsg" => $logmsg, "loglevel" => $loglevel]);
     }
 
@@ -2256,7 +2256,7 @@ class Server extends Node
      * @return void
      */
     public function sendPluginCmd($plugin, $data) {
-        $this->execute("plugincmd", ["name" => $plugin, "data" => $data, "targetmode" => TeamSpeak3::PLUGINCMD_SERVER]);
+        $this->execute("plugincmd", ["name" => $plugin, "data" => $data, "targetmode" => TeamSpeak::PLUGINCMD_SERVER]);
     }
 
     /**
@@ -2322,21 +2322,21 @@ class Server extends Node
      * @param Client $a
      * @param Client $b
      * @return integer
-     * @throws \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException
+     * @throws \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException
      */
     protected static function sortClientList(Client $a, Client $b) {
         if (get_class($a) != get_class($b)) {
             return 0;
 
             /* workaround for PHP bug #50688 */
-            throw new \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException("invalid parameter", 0x602);
+            throw new \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException("invalid parameter", 0x602);
         }
 
         if (!$a instanceof Client) {
             return 0;
 
             /* workaround for PHP bug #50688 */
-            throw new \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException("convert error", 0x604);
+            throw new \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException("convert error", 0x604);
         }
 
         if ($a->getProperty("client_talk_power", 0) != $b->getProperty("client_talk_power", 0)) {
@@ -2356,21 +2356,21 @@ class Server extends Node
      * @param Node $a
      * @param Node $b
      * @return integer
-     * @throws \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException
+     * @throws \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException
      */
     protected static function sortGroupList(Node $a, Node $b) {
         if (get_class($a) != get_class($b)) {
             return 0;
 
             /* workaround for PHP bug #50688 */
-            throw new \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException("invalid parameter", 0x602);
+            throw new \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException("invalid parameter", 0x602);
         }
 
         if (!$a instanceof ServerGroup && !$a instanceof ChannelGroup) {
             return 0;
 
             /* workaround for PHP bug #50688 */
-            throw new \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException("convert error", 0x604);
+            throw new \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException("convert error", 0x604);
         }
 
         if ($a->getProperty("sortid", 0) != $b->getProperty("sortid", 0) && $a->getProperty("sortid", 0) != 0 && $b->getProperty("sortid", 0) != 0) {
@@ -2386,13 +2386,13 @@ class Server extends Node
      * @param array $a
      * @param array $b
      * @return integer
-     * @throws \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException
+     * @throws \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException
      */
     protected static function sortFileList(array $a, array $b) {
         if (!array_key_exists("src", $a) || !array_key_exists("src", $b) || !array_key_exists("type", $a) || !array_key_exists("type", $b)) {
             return 0;
 
-            throw new \PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\ServerQueryException("invalid parameter", 0x602);
+            throw new \ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\ServerQueryException("invalid parameter", 0x602);
         }
 
         if ($a["type"] != $b["type"]) {

@@ -17,21 +17,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Transport;
+namespace ESportsAlliance\TeamSpeakCore\Transport;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\TransportException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Exception\TransportException;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
 
 /**
  * Class TCP
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Transport
+ * @package ESportsAlliance\TeamSpeakCore\Transport
  * @class TCP
  * @brief Class for connecting to a remote server through TCP.
  */

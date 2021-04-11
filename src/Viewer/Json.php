@@ -17,46 +17,46 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Viewer;
+namespace ESportsAlliance\TeamSpeakCore\Viewer;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Convert;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Channel;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\ChannelGroup;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Client;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Node;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Server;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\ServerGroup;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\Helper\Convert;
+use ESportsAlliance\TeamSpeakCore\Node\Channel;
+use ESportsAlliance\TeamSpeakCore\Node\ChannelGroup;
+use ESportsAlliance\TeamSpeakCore\Node\Client;
+use ESportsAlliance\TeamSpeakCore\Node\Node;
+use ESportsAlliance\TeamSpeakCore\Node\Server;
+use ESportsAlliance\TeamSpeakCore\Node\ServerGroup;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 
 /**
  * Class Json
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Viewer
- * @class PlanetTeamSpeak\TeamSpeak3Framework\Viewer\Json
+ * @package ESportsAlliance\TeamSpeakCore\Viewer
+ * @class ESportsAlliance\TeamSpeakCore\Viewer\Json
  * @brief Generates a JSON struct used in JS-based TeamSpeak 3 viewers.
  */
 class Json implements ViewerInterface
 {
     /**
-     * Stores an array of data parsed from PlanetTeamSpeak\TeamSpeak3Framework\Node\Node objects.
+     * Stores an array of data parsed from ESportsAlliance\TeamSpeakCore\Node\Node objects.
      *
      * @var array
      */
     protected $data = null;
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\Node\Node object which is currently processed.
+     * The ESportsAlliance\TeamSpeakCore\Node\Node object which is currently processed.
      *
      * @var Node
      */
     protected $currObj = null;
 
     /**
-     * An array filled with siblings for the PlanetTeamSpeak\TeamSpeak3Framework\Node\Node object which is currently
+     * An array filled with siblings for the ESportsAlliance\TeamSpeakCore\Node\Node object which is currently
      * processed.
      *
      * @var array
@@ -64,7 +64,7 @@ class Json implements ViewerInterface
     protected $currSib = null;
 
     /**
-     * An internal counter indicating the depth of the PlanetTeamSpeak\TeamSpeak3Framework\Node\Node object previously
+     * An internal counter indicating the depth of the ESportsAlliance\TeamSpeakCore\Node\Node object previously
      * processed.
      *
      * @var integer
@@ -195,41 +195,41 @@ class Json implements ViewerInterface
 
         if ($this->currObj instanceof Channel && $this->currObj->isSpacer()) {
             switch ($this->currObj->spacerGetType()) {
-        case (string) TeamSpeak3::SPACER_SOLIDLINE:
+        case (string) TeamSpeak::SPACER_SOLIDLINE:
           $extras .= " solidline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DASHLINE:
+        case (string) TeamSpeak::SPACER_DASHLINE:
           $extras .= " dashline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DASHDOTLINE:
+        case (string) TeamSpeak::SPACER_DASHDOTLINE:
           $extras .= " dashdotline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DASHDOTDOTLINE:
+        case (string) TeamSpeak::SPACER_DASHDOTDOTLINE:
           $extras .= " dashdotdotline";
           break;
 
-        case (string) TeamSpeak3::SPACER_DOTLINE:
+        case (string) TeamSpeak::SPACER_DOTLINE:
           $extras .= " dotline";
           break;
       }
 
             switch ($this->currObj->spacerGetAlign()) {
-        case TeamSpeak3::SPACER_ALIGN_REPEAT:
+        case TeamSpeak::SPACER_ALIGN_REPEAT:
           $extras .= " repeat";
           break;
 
-        case TeamSpeak3::SPACER_ALIGN_CENTER:
+        case TeamSpeak::SPACER_ALIGN_CENTER:
           $extras .= " center";
           break;
 
-        case TeamSpeak3::SPACER_ALIGN_RIGHT:
+        case TeamSpeak::SPACER_ALIGN_RIGHT:
           $extras .= " right";
           break;
 
-        case TeamSpeak3::SPACER_ALIGN_LEFT:
+        case TeamSpeak::SPACER_ALIGN_LEFT:
           $extras .= " left";
           break;
       }
@@ -252,23 +252,23 @@ class Json implements ViewerInterface
         }
 
         switch ($this->currObj->spacerGetType()) {
-      case (string) TeamSpeak3::SPACER_SOLIDLINE:
+      case (string) TeamSpeak::SPACER_SOLIDLINE:
         $type .= "solidline";
         break;
 
-      case (string) TeamSpeak3::SPACER_DASHLINE:
+      case (string) TeamSpeak::SPACER_DASHLINE:
         $type .= "dashline";
         break;
 
-      case (string) TeamSpeak3::SPACER_DASHDOTLINE:
+      case (string) TeamSpeak::SPACER_DASHDOTLINE:
         $type .= "dashdotline";
         break;
 
-      case (string) TeamSpeak3::SPACER_DASHDOTDOTLINE:
+      case (string) TeamSpeak::SPACER_DASHDOTDOTLINE:
         $type .= "dashdotdotline";
         break;
 
-      case (string) TeamSpeak3::SPACER_DOTLINE:
+      case (string) TeamSpeak::SPACER_DOTLINE:
         $type .= "dotline";
         break;
 
@@ -278,15 +278,15 @@ class Json implements ViewerInterface
 
         if ($type == "custom") {
             switch ($this->currObj->spacerGetAlign()) {
-        case TeamSpeak3::SPACER_ALIGN_REPEAT:
+        case TeamSpeak::SPACER_ALIGN_REPEAT:
           $type .= "repeat";
           break;
 
-        case TeamSpeak3::SPACER_ALIGN_CENTER:
+        case TeamSpeak::SPACER_ALIGN_CENTER:
           $type .= "center";
           break;
 
-        case TeamSpeak3::SPACER_ALIGN_RIGHT:
+        case TeamSpeak::SPACER_ALIGN_RIGHT:
           $type .= "right";
           break;
 
@@ -313,9 +313,9 @@ class Json implements ViewerInterface
             $behind = [];
 
             foreach ($this->currObj->memberOf() as $group) {
-                if ($group->getProperty("namemode") == TeamSpeak3::GROUP_NAMEMODE_BEFORE) {
+                if ($group->getProperty("namemode") == TeamSpeak::GROUP_NAMEMODE_BEFORE) {
                     $before[] = "[" . $group["name"] . "]";
-                } elseif ($group->getProperty("namemode") == TeamSpeak3::GROUP_NAMEMODE_BEHIND) {
+                } elseif ($group->getProperty("namemode") == TeamSpeak::GROUP_NAMEMODE_BEHIND) {
                     $behind[] = "[" . $group["name"] . "]";
                 }
             }

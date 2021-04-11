@@ -17,21 +17,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Adapter;
+namespace ESportsAlliance\TeamSpeakCore\Adapter;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Profiler;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Profiler\Timer;
-use PlanetTeamSpeak\TeamSpeak3Framework\Transport\TCP;
-use PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Helper\Profiler;
+use ESportsAlliance\TeamSpeakCore\Helper\Profiler\Timer;
+use ESportsAlliance\TeamSpeakCore\Transport\TCP;
+use ESportsAlliance\TeamSpeakCore\Transport\Transport;
 
 /**
- * @class PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter
+ * @class ESportsAlliance\TeamSpeakCore\Adapter\Adapter
  * @brief Provides low-level methods for concrete adapters to communicate with a TeamSpeak 3 Server.
  */
 abstract class Adapter
@@ -44,14 +44,14 @@ abstract class Adapter
     protected $options = null;
 
     /**
-     * Stores an PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport object.
+     * Stores an ESportsAlliance\TeamSpeakCore\Transport\Transport object.
      *
      * @var Transport
      */
     protected $transport = null;
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter constructor.
+     * The ESportsAlliance\TeamSpeakCore\Adapter\Adapter constructor.
      *
      * @param  array $options
      * @throws AdapterException
@@ -66,14 +66,14 @@ abstract class Adapter
     }
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter destructor.
+     * The ESportsAlliance\TeamSpeakCore\Adapter\Adapter destructor.
      *
      * @return void
      */
     abstract public function __destruct();
 
     /**
-     * Connects the PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport object and performs initial actions on the remote
+     * Connects the ESportsAlliance\TeamSpeakCore\Transport\Transport object and performs initial actions on the remote
      * server.
      *
      * @throws AdapterException
@@ -141,7 +141,7 @@ abstract class Adapter
     }
 
     /**
-     * Returns the hostname or IPv4 address the underlying PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport object
+     * Returns the hostname or IPv4 address the underlying ESportsAlliance\TeamSpeakCore\Transport\Transport object
      * is connected to.
      *
      * @return string
@@ -152,7 +152,7 @@ abstract class Adapter
     }
 
     /**
-     * Returns the port number of the server the underlying PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport object
+     * Returns the port number of the server the underlying ESportsAlliance\TeamSpeakCore\Transport\Transport object
      * is connected to.
      *
      * @return string

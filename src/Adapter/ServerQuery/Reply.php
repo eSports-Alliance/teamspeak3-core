@@ -17,23 +17,23 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery;
+namespace ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Node\Host;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Node\Host;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 
 /**
  * Class Reply
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery
+ * @package ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery
  * @class Reply
  * @brief Provides methods to analyze and format a ServerQuery reply.
  */
@@ -54,7 +54,7 @@ class Reply
     protected $rpl = null;
 
     /**
-     * Stores connected PlanetTeamSpeak\TeamSpeak3Framework\Node\Host object.
+     * Stores connected ESportsAlliance\TeamSpeakCore\Node\Host object.
      *
      * @var Host
      */
@@ -82,7 +82,7 @@ class Reply
     protected $exp = true;
 
     /**
-     * Creates a new PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Reply object.
+     * Creates a new ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Reply object.
      *
      * @param array $rpl
      * @param string $cmd
@@ -102,7 +102,7 @@ class Reply
     }
 
     /**
-     * Returns the reply as an PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper object.
+     * Returns the reply as an ESportsAlliance\TeamSpeakCore\Helper\StringHelper object.
      *
      * @return StringHelper
      */
@@ -122,7 +122,7 @@ class Reply
             return [];
         }
 
-        $list = $this->toString(0)->split(TeamSpeak3::SEPARATOR_LIST);
+        $list = $this->toString(0)->split(TeamSpeak::SEPARATOR_LIST);
 
         if (!func_num_args()) {
             for ($i = 0; $i < count($list); $i++) {
@@ -143,7 +143,7 @@ class Reply
         $table = [];
 
         foreach ($this->toLines(0) as $cells) {
-            $pairs = $cells->split(TeamSpeak3::SEPARATOR_CELL);
+            $pairs = $cells->split(TeamSpeak::SEPARATOR_CELL);
 
             if (!func_num_args()) {
                 for ($i = 0; $i < count($pairs); $i++) {
@@ -173,10 +173,10 @@ class Reply
                     continue;
                 }
 
-                if (!$pair->contains(TeamSpeak3::SEPARATOR_PAIR)) {
+                if (!$pair->contains(TeamSpeak::SEPARATOR_PAIR)) {
                     $array[$i][$pair->toString()] = null;
                 } else {
-                    list($ident, $value) = $pair->split(TeamSpeak3::SEPARATOR_PAIR, 2);
+                    list($ident, $value) = $pair->split(TeamSpeak::SEPARATOR_PAIR, 2);
 
                     $array[$i][$ident->toString()] = $value->isInt() ? $value->toInt() : (!func_num_args() ? $value->unescape() : $value);
                 }
@@ -275,7 +275,7 @@ class Reply
     }
 
     /**
-     * Parses a ServerQuery error and throws a PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException object if
+     * Parses a ServerQuery error and throws a ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException object if
      * there's an error.
      *
      * @param  StringHelper $err
@@ -284,10 +284,10 @@ class Reply
      */
     protected function fetchError(StringHelper $err)
     {
-        $cells = $err->section(TeamSpeak3::SEPARATOR_CELL, 1, 3);
+        $cells = $err->section(TeamSpeak::SEPARATOR_CELL, 1, 3);
 
-        foreach ($cells->split(TeamSpeak3::SEPARATOR_CELL) as $pair) {
-            list($ident, $value) = $pair->split(TeamSpeak3::SEPARATOR_PAIR);
+        foreach ($cells->split(TeamSpeak::SEPARATOR_CELL) as $pair) {
+            list($ident, $value) = $pair->split(TeamSpeak::SEPARATOR_PAIR);
 
             $this->err[$ident->toString()] = $value->isInt() ? $value->toInt() : $value->unescape();
         }
@@ -299,7 +299,7 @@ class Reply
                 if ($permsid = key($this->con->request("permget permid=" . $permid, false)->toAssocArray("permsid"))) {
                     $suffix = " (failed on " . $permsid . ")";
                 } else {
-                    $suffix = " (failed on " . $this->cmd->section(TeamSpeak3::SEPARATOR_CELL) . " " . $permid . "/0x" . strtoupper(dechex($permid)) . ")";
+                    $suffix = " (failed on " . $this->cmd->section(TeamSpeak::SEPARATOR_CELL) . " " . $permid . "/0x" . strtoupper(dechex($permid)) . ")";
                 }
             } elseif ($details = $this->getErrorProperty("extra_msg")) {
                 $suffix = " (" . trim($details) . ")";
@@ -312,7 +312,7 @@ class Reply
     }
 
     /**
-     * Parses a ServerQuery reply and creates a PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper object.
+     * Parses a ServerQuery reply and creates a ESportsAlliance\TeamSpeakCore\Helper\StringHelper object.
      *
      * @param  array $rpl
      * @return void
@@ -321,14 +321,14 @@ class Reply
     protected function fetchReply($rpl)
     {
         foreach ($rpl as $key => $val) {
-            if ($val->startsWith(TeamSpeak3::TS3_MOTD_PREFIX) || $val->startsWith(TeamSpeak3::TEA_MOTD_PREFIX) || (defined("CUSTOM_MOTD_PREFIX") && $val->startsWith(CUSTOM_MOTD_PREFIX))) {
+            if ($val->startsWith(TeamSpeak::TS3_MOTD_PREFIX) || $val->startsWith(TeamSpeak::TEA_MOTD_PREFIX) || (defined("CUSTOM_MOTD_PREFIX") && $val->startsWith(CUSTOM_MOTD_PREFIX))) {
                 unset($rpl[$key]);
-            } elseif ($val->startsWith(TeamSpeak3::EVENT)) {
+            } elseif ($val->startsWith(TeamSpeak::EVENT)) {
                 $this->evt[] = new Event($rpl[$key], $this->con);
                 unset($rpl[$key]);
             }
         }
 
-        $this->rpl = new StringHelper(implode(TeamSpeak3::SEPARATOR_LIST, $rpl));
+        $this->rpl = new StringHelper(implode(TeamSpeak::SEPARATOR_LIST, $rpl));
     }
 }

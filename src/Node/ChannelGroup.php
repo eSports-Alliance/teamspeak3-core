@@ -17,20 +17,20 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Node;
+namespace ESportsAlliance\TeamSpeakCore\Node;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\ServerQueryException;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
+use ESportsAlliance\TeamSpeakCore\Exception\ServerQueryException;
 
 /**
  * Class ChannelGroup
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Node
+ * @package ESportsAlliance\TeamSpeakCore\Node
  * @class ChannelGroup
  * @brief Class describing a TeamSpeak 3 channel group and all it's parameters.
  */
@@ -87,7 +87,7 @@ class ChannelGroup extends Group
      * @param  integer $type
      * @return integer
      */
-    public function copy($name = null, $tcgid = 0, $type = TeamSpeak3::GROUP_DBTYPE_REGULAR)
+    public function copy($name = null, $tcgid = 0, $type = TeamSpeak::GROUP_DBTYPE_REGULAR)
     {
         return $this->getParent()->channelGroupCopy($this->getId(), $name, $tcgid, $type);
     }
@@ -181,7 +181,7 @@ class ChannelGroup extends Group
      */
     public function privilegeKeyCreate($cid, $description = null, $customset = null)
     {
-        return $this->getParent()->privilegeKeyCreate($this->getId(), TeamSpeak3::TOKEN_CHANNELGROUP, $cid, $description, $customset);
+        return $this->getParent()->privilegeKeyCreate($this->getId(), TeamSpeak::TOKEN_CHANNELGROUP, $cid, $description, $customset);
     }
 
     /**

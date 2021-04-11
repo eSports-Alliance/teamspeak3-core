@@ -17,21 +17,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  *
- * @package   TeamSpeak3
+ * @package   TeamSpeak
  * @author    Sven 'ScP' Paulsen
  * @copyright Copyright (c) Planet TeamSpeak. All rights reserved.
  */
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Transport;
+namespace ESportsAlliance\TeamSpeakCore\Transport;
 
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\TransportException;
+use ESportsAlliance\TeamSpeakCore\Adapter\Adapter;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Exception\TransportException;
 
 /**
  * Class Transport
- * @package PlanetTeamSpeak\TeamSpeak3Framework\Transport
+ * @package ESportsAlliance\TeamSpeakCore\Transport
  * @class Transport
  * @brief Abstract class for connecting to a TeamSpeak 3 Server through different ways of transport.
  */
@@ -59,14 +59,14 @@ abstract class Transport
     protected $session = null;
 
     /**
-     * Stores the PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter object using this transport.
+     * Stores the ESportsAlliance\TeamSpeakCore\Adapter\Adapter object using this transport.
      *
      * @var Adapter
      */
     protected $adapter = null;
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport constructor.
+     * The ESportsAlliance\TeamSpeakCore\Transport\Transport constructor.
      *
      * @param array $config
      * @return Transport
@@ -115,7 +115,7 @@ abstract class Transport
     }
 
     /**
-     * The PlanetTeamSpeak\TeamSpeak3Framework\Transport\Transport destructor.
+     * The ESportsAlliance\TeamSpeakCore\Transport\Transport destructor.
      *
      * @return void
      */
@@ -187,7 +187,7 @@ abstract class Transport
     }
 
     /**
-     * Sets the PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter object using this transport.
+     * Sets the ESportsAlliance\TeamSpeakCore\Adapter\Adapter object using this transport.
      *
      * @param Adapter $adapter
      * @return void
@@ -198,7 +198,7 @@ abstract class Transport
     }
 
     /**
-     * Returns the PlanetTeamSpeak\TeamSpeak3Framework\Adapter\Adapter object using this transport.
+     * Returns the ESportsAlliance\TeamSpeakCore\Adapter\Adapter object using this transport.
      *
      * @return Adapter
      */
