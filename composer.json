@@ -1,20 +1,21 @@
 {
-  "name": "planetteamspeak/ts3-php-framework",
+  "name": "esports-alliance/teamspeak3-core",
   "type": "library",
   "description": "Modern use-at-will framework that provides individual components to manage TeamSpeak 3 Server instances",
   "keywords": ["ts3", "teamspeak","server","query","filetransfer","management","interface","api"],
-  "homepage": "https://www.planetteamspeak.com",
+  "homepage": "https://github.com/eSports-Alliance/teamspeak3-core",
   "license": "GPL-3.0",
   "authors": [
     {
       "name": "Sven 'ScP' Paulsen",
       "email": "scp@planetteamspeak.com"
+    }, {
+      "name": "Thomas 'y4roc' Hanke",
+      "email": "18329992+thhan@users.noreply.github.com"
     }
   ],
   "support": {
-    "email": "info@planetteamspeak.com",
-    "issues": "https://github.com/planetteamspeak/ts3phpframework/issues",
-    "docs": "https://docs.planetteamspeak.com/ts3/php/framework"
+    "issues": "https://github.com/eSports-Alliance/teamspeak3-core/issues"
   },
   "config": {
     "sort-packages": true
@@ -38,12 +39,12 @@
   },
   "autoload": {
     "psr-4": {
-      "PlanetTeamSpeak\\TeamSpeak3Framework\\": "src/"
+      "ESportsAlliance\\TeamSpeak3Core\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "PlanetTeamSpeak\\TeamSpeak3Framework\\Tests\\": "tests/"
+      "ESportsAlliance\\TeamSpeak3Core\\Tests\\": "tests/"
     }
   },
   "scripts": {
