@@ -75,11 +75,6 @@ class TeamSpeak
      */
     const SCHID = "selected";
 
-    /**
-     * TeamSpeak 3 PHP Framework version.
-     */
-    const LIB_VERSION = "1.1.35";
-
     /*@
      * TeamSpeak 3 protocol separators.
      */
@@ -502,7 +497,7 @@ class TeamSpeak
      */
     public static function init()
     {
-        if (version_compare(phpversion(), "5.2.1") == -1) {
+        if (version_compare(phpversion(), "7.0.0") == -1) {
             throw new \Exception("this particular software cannot be used with the installed version of PHP");
         }
 

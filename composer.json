@@ -21,7 +21,7 @@
     "sort-packages": true
   },
   "require": {
-    "php": ">=5.6",
+    "php": ">=7.0",
     "ext-json": "*",
     "ext-ctype": "*",
     "phpseclib/phpseclib": "^1.0",
