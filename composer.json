@@ -28,7 +28,7 @@
     "ext-openssl": "*"
   },
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
     "friendsofphp/php-cs-fixer": "^2.0.0",
     "php-coveralls/php-coveralls": "^2.2",
     "phpcompatibility/php-compatibility": "^8.2",
