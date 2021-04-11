@@ -1,12 +1,12 @@
 <?php
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Tests\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Tests\Helper;
 
 use PHPUnit\Framework\TestCase;
 use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Uri;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Helper\Uri;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
 
 class UriTest extends TestCase
 {

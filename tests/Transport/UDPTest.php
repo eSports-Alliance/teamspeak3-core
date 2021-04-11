@@ -4,9 +4,9 @@ namespace Tests\Transport;
 
 use \PHPUnit\Framework\TestCase;
 use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery;
-use PlanetTeamSpeak\TeamSpeak3Framework\Transport\UDP;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\TransportException;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery;
+use ESportsAlliance\TeamSpeakCore\Transport\UDP;
+use ESportsAlliance\TeamSpeakCore\Exception\TransportException;
 
 class UDPTest extends TestCase
 {

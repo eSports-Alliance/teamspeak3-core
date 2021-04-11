@@ -1,10 +1,10 @@
 <?php
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Tests\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Tests\Helper;
 
 use PHPUnit\Framework\TestCase;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
-use PlanetTeamSpeak\TeamSpeak3Framework\TeamSpeak3;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\TeamSpeak;
 
 class StringTest extends TestCase
 {
@@ -277,7 +277,7 @@ class StringTest extends TestCase
 
     public function testToHex()
     {
-        TeamSpeak3::init();
+        TeamSpeak::init();
         $string = new StringHelper("Hello");
         $this->assertEquals("48656C6C6F", $string->toHex());
     }

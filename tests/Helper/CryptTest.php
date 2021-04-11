@@ -1,10 +1,10 @@
 <?php
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Tests\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Tests\Helper;
 
 use PHPUnit\Framework\TestCase;
 use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Crypt;
+use ESportsAlliance\TeamSpeakCore\Helper\Crypt;
 
 class CryptTest extends TestCase
 {

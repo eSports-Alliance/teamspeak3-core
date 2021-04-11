@@ -1,12 +1,12 @@
 <?php
 
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Tests\Adapter;
+namespace ESportsAlliance\TeamSpeakCore\Tests\Adapter;
 
 
 use PHPUnit\Framework\TestCase;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\MockServerQuery;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\AdapterException;
+use ESportsAlliance\TeamSpeakCore\Adapter\MockServerQuery;
+use ESportsAlliance\TeamSpeakCore\Exception\AdapterException;
 
 class ServerQueryTest extends TestCase
 {

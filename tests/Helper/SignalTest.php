@@ -1,13 +1,13 @@
 <?php
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Tests\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Tests\Helper;
 
 use PHPUnit\Framework\TestCase;
 use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\HelperException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal;
-use PlanetTeamSpeak\TeamSpeak3Framework\Exception\SignalException;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Signal\Handler;
+use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal;
+use ESportsAlliance\TeamSpeakCore\Exception\SignalException;
+use ESportsAlliance\TeamSpeakCore\Helper\Signal\Handler;
 
 class SignalTest extends TestCase
 {

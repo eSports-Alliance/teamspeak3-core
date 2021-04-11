@@ -4,8 +4,8 @@ namespace Tests\Adapter\ServerQuery;
 
 use \PHPUnit\Framework\TestCase;
 use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
-use PlanetTeamSpeak\TeamSpeak3Framework\Adapter\ServerQuery\Reply;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\StringHelper;
+use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Reply;
+use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
 
 /**
  * Class ReplyTest

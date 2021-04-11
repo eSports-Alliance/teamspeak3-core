@@ -1,10 +1,10 @@
 <?php
 
-namespace PlanetTeamSpeak\TeamSpeak3Framework\Tests\Helper;
+namespace ESportsAlliance\TeamSpeakCore\Tests\Helper;
 
 use PHPUnit\Framework\TestCase;
 use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
-use PlanetTeamSpeak\TeamSpeak3Framework\Helper\Char;
+use ESportsAlliance\TeamSpeakCore\Helper\Char;
 
 class CharTest extends TestCase
 {
@@ -34,7 +34,7 @@ class CharTest extends TestCase
     $this->assertEquals($testOrd, hexdec($char->toHex())); // hexdec('61')
     $this->assertEquals(
         $testLower,
-        (string)\PlanetTeamSpeak\TeamSpeak3Framework\Helper\Char::fromHex('61')
+        (string)\ESportsAlliance\TeamSpeakCore\Helper\Char::fromHex('61')
     );
 
         $this->assertEquals($testLower, $char->toString()); // Expect: 97
