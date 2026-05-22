@@ -3,7 +3,6 @@
 namespace Tests\Adapter\ServerQuery;
 
 use \PHPUnit\Framework\TestCase;
-use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
 use ESportsAlliance\TeamSpeakCore\Adapter\ServerQuery\Reply;
 use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
 

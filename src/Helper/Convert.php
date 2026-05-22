@@ -83,7 +83,7 @@ class Convert
             $seconds = $seconds / 1000;
         }
 
-        return sprintf($format, $seconds / 60 / 60 / 24, ($seconds / 60 / 60) % 24, ($seconds / 60) % 60, $seconds % 60);
+        return sprintf($format, (int)($seconds / 60 / 60 / 24), ((int)($seconds / 60 / 60)) % 24, ((int)($seconds / 60)) % 60, ((int)$seconds) % 60);
     }
 
     /**

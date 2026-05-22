@@ -472,7 +472,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     public function toUtf8()
     {
         if (!$this->isUtf8()) {
-            $this->string = utf8_encode($this->string);
+            $this->string = mb_convert_encoding($this->string, 'UTF-8', 'ISO-8859-1');
         }
 
         return $this;
@@ -845,7 +845,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
      *
      * @return string
      */
-    public function jsonSerialize()
+    public function jsonSerialize(): mixed
     {
         return $this->toUtf8()->string;
     }
@@ -853,7 +853,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function count()
+    public function count(): int
     {
         return strlen($this->string);
     }
@@ -861,7 +861,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function rewind()
+    public function rewind(): void
     {
         $this->position = 0;
     }
@@ -869,7 +869,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function valid()
+    public function valid(): bool
     {
         return $this->position < $this->count();
     }
@@ -877,7 +877,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function key()
+    public function key(): mixed
     {
         return $this->position;
     }
@@ -886,7 +886,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
      * @ignore
      * @throws HelperException
      */
-    public function current()
+    public function current(): mixed
     {
         return new Char($this->string[$this->position]);
     }
@@ -894,7 +894,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function next()
+    public function next(): void
     {
         $this->position++;
     }
@@ -902,7 +902,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return ($offset < strlen($this->string)) ? true : false;
     }
@@ -910,7 +910,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         return ($this->offsetExists($offset)) ? new Char($this->string[$offset]) : null;
     }
@@ -918,7 +918,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         if (!$this->offsetExists($offset)) {
             return;
@@ -930,7 +930,7 @@ class StringHelper implements ArrayAccess, Iterator, Countable, JsonSerializable
     /**
      * @ignore
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         if (!$this->offsetExists($offset)) {
             return;

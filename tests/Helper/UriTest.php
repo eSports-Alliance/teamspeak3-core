@@ -3,7 +3,6 @@
 namespace ESportsAlliance\TeamSpeakCore\Tests\Helper;
 
 use PHPUnit\Framework\TestCase;
-use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
 use ESportsAlliance\TeamSpeakCore\Helper\Uri;
 use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
 use ESportsAlliance\TeamSpeakCore\Helper\StringHelper;
@@ -297,10 +296,7 @@ class UriTest extends TestCase
     public function testGetPort(Uri $uri)
     {
         $this->assertEquals(10011, $uri->getPort());
-        $this->assertInternalType(
-            PHPUnit_IsType::TYPE_INT,
-            $uri->getPort()
-        );
+        $this->assertIsInt($uri->getPort());
     }
 
     /**
@@ -330,10 +326,7 @@ class UriTest extends TestCase
             ['server_port' => '9987', 'blocking' => '0'],
             $uri->getQuery()
         );
-        $this->assertInternalType(
-            PHPUnit_IsType::TYPE_ARRAY,
-            $uri->getQuery()
-        );
+        $this->assertIsArray($uri->getQuery());
     }
 
     /**

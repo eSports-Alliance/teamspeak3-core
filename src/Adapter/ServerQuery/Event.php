@@ -68,7 +68,7 @@ class Event implements ArrayAccess
      * @param  Host     $con
      * @throws AdapterException
      */
-    public function __construct(StringHelper $evt, Host $con = null)
+    public function __construct(StringHelper $evt, ?Host $con = null)
     {
         if (!$evt->startsWith(TeamSpeak::EVENT)) {
             throw new AdapterException("invalid notification event format");
@@ -124,7 +124,7 @@ class Event implements ArrayAccess
     /**
      * @ignore
      */
-    public function offsetExists($offset)
+    public function offsetExists(mixed $offset): bool
     {
         return array_key_exists($offset, $this->data) ? true : false;
     }
@@ -133,7 +133,7 @@ class Event implements ArrayAccess
      * @throws ServerQueryException
      * @ignore
      */
-    public function offsetGet($offset)
+    public function offsetGet(mixed $offset): mixed
     {
         if (!$this->offsetExists($offset)) {
             throw new ServerQueryException("invalid parameter", 0x602);
@@ -146,7 +146,7 @@ class Event implements ArrayAccess
      * @throws NodeException
      * @ignore
      */
-    public function offsetSet($offset, $value)
+    public function offsetSet(mixed $offset, mixed $value): void
     {
         throw new NodeException("event '" . $this->getType() . "' is read only");
     }
@@ -154,7 +154,7 @@ class Event implements ArrayAccess
     /**
      * @ignore
      */
-    public function offsetUnset($offset)
+    public function offsetUnset(mixed $offset): void
     {
         unset($this->data[$offset]);
     }

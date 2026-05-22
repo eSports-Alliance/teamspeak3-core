@@ -21,21 +21,19 @@
     "sort-packages": true
   },
   "require": {
-    "php": ">=7.0",
+    "php": ">=8.1",
     "ext-json": "*",
     "ext-ctype": "*",
-    "phpseclib/phpseclib": "^1.0",
+    "ext-mbstring": "*",
     "ext-openssl": "*"
   },
   "require-dev": {
-    "dealerdirect/phpcodesniffer-composer-installer": "^0.7.1",
-    "friendsofphp/php-cs-fixer": "^2.0.0",
-    "php-coveralls/php-coveralls": "^2.2",
+    "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
+    "friendsofphp/php-cs-fixer": "^3.0",
+    "php-coveralls/php-coveralls": "^2.7",
     "phpcompatibility/php-compatibility": "^8.2",
-    "phpunit/phpunit": "^4.8.35 || ^5.4.3 || ^6.0 || ^7.0",
-    "react/socket": "^0.8.5",
-    "squizlabs/php_codesniffer": "^3.3",
-    "symfony/yaml": "~2.1|~3.0|~4.0"
+    "phpunit/phpunit": "^10.5",
+    "squizlabs/php_codesniffer": "^3.3"
   },
   "autoload": {
     "psr-4": {
@@ -48,7 +46,7 @@
     }
   },
   "scripts": {
-    "compatibility": "\"vendor/bin/phpcs\" -ps --basepath=. --standard=PHPCompatibility --runtime-set testVersion 5.2- src",
+    "compatibility": "\"vendor/bin/phpcs\" -ps --basepath=. --standard=PHPCompatibility --runtime-set testVersion 8.1- src",
     "tests": [
       "\"vendor/bin/phpunit\" --no-coverage"
     ],

@@ -91,7 +91,7 @@ class Reply
      * @throws AdapterException
      * @throws ServerQueryException
      */
-    public function __construct(array $rpl, $cmd = null, Host $con = null, $exp = true)
+    public function __construct(array $rpl, $cmd = null, ?Host $con = null, $exp = true)
     {
         $this->cmd = new StringHelper($cmd);
         $this->con = $con;

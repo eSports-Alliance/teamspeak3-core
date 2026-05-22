@@ -3,7 +3,6 @@
 namespace ESportsAlliance\TeamSpeakCore\Tests\Helper;
 
 use PHPUnit\Framework\TestCase;
-use \PHPUnit\Framework\Constraint\IsType as PHPUnit_IsType;
 use ESportsAlliance\TeamSpeakCore\Exception\HelperException;
 use ESportsAlliance\TeamSpeakCore\Helper\Signal;
 use ESportsAlliance\TeamSpeakCore\Exception\SignalException;
@@ -17,7 +16,7 @@ class SignalTest extends TestCase
     protected static $callback = __CLASS__ . '::onEvent';
     protected static $testString = '!@w~//{tI_8G77<qS+g*[Gb@u`pJ^2>rO*f=KS:8Yj';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         static::$cTriggers = [];
         foreach (Signal::getInstance()->getSignals() as $signal) {
@@ -59,13 +58,13 @@ class SignalTest extends TestCase
 
         // Test state: subscribed signals
         $signals  = $instSignal->getSignals();
-        $this->assertInternalType(PHPUnit_IsType::TYPE_ARRAY, $signals);
+        $this->assertIsArray($signals);
         $this->assertEquals(1, count($signals));
         $this->assertEquals(static::$signal, $signals[0]);
 
         // Test state: subscribed signal handlers
         $handlers = $instSignal->getHandlers(static::$signal);
-        $this->assertInternalType(PHPUnit_IsType::TYPE_ARRAY, $handlers);
+        $this->assertIsArray($handlers);
         $this->assertEquals(1, count($handlers));
         $this->assertArrayHasKey(
             Signal::getInstance()->getCallbackHash(static::$callback),
@@ -83,7 +82,7 @@ class SignalTest extends TestCase
         Signal::getInstance()->subscribe(static::$signal, static::$callback);
         $response = Signal::getInstance()->emit(static::$signal, static::$testString);
         $this->assertEquals(static::$testString, $response);
-        $this->assertInternalType(gettype(static::$testString), $response);
+        $this->assertIsString($response);
 
         // Verify correct count of callback executions
         $this->assertEquals(1, count(static::$cTriggers));
@@ -139,7 +138,7 @@ class SignalTest extends TestCase
 
         $response = $instSignal->emit(static::$signal, static::$testString);
         $this->assertEquals(static::$testString, $response);
-        $this->assertInternalType(gettype(static::$testString), $response);
+        $this->assertIsString($response);
 
         // Verify correct count of callback executions
         $this->assertEquals(2, count(static::$cTriggers));
